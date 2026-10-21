@@ -66,6 +66,42 @@ a:hover{transition:color .2s}
 @media(max-width:800px){.robot-stage{width:min(78vw,390px);height:min(78vw,390px);min-height:280px}}
 @media(prefers-reduced-motion:reduce){.robot-stage,.robot-floor{animation:none}}
 
+
+/* Self-contained holographic robot: no external 3D library required */
+.robot-stage{overflow:visible}
+.robot-figure{position:relative;width:230px;height:350px;z-index:2;filter:drop-shadow(0 0 12px #168dff70);animation:bot-hover 4s ease-in-out infinite;transform-style:preserve-3d}
+.robot-figure:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,#a7f6ff20 48%,transparent 65%);pointer-events:none;animation:bot-glint 4s linear infinite}
+.bot-head,.bot-body,.bot-hip,.bot-arm,.bot-leg,.bot-neck,.bot-antenna{position:absolute;background:linear-gradient(135deg,#a1f8ff 0%,#258fc5 17%,#092e50 45%,#126b9d 70%,#67f5ff 100%);border:1px solid #7cecffb0;box-shadow:inset 0 0 12px #76eaff45,0 0 10px #168dff45}
+.bot-head{width:92px;height:70px;left:69px;top:43px;border-radius:20px 20px 15px 15px;clip-path:polygon(12% 0,88% 0,100% 20%,94% 82%,76% 100%,24% 100%,6% 82%,0 20%);animation:bot-head-turn 5s ease-in-out infinite}
+.bot-antenna{width:4px;height:23px;left:113px;top:19px;border:0;background:#64f7ff;box-shadow:0 0 12px #36f5d0}
+.bot-antenna:before{content:"";position:absolute;width:10px;height:10px;left:-3px;top:-7px;border-radius:50%;background:#a8ffff;box-shadow:0 0 14px #36f5d0}
+.bot-eye{position:absolute;top:28px;width:21px;height:7px;background:#7fffff;box-shadow:0 0 12px #36f5d0,0 0 24px #278dff;border-radius:3px}
+.eye-left{left:17px}.eye-right{right:17px}
+.bot-ear{position:absolute;top:24px;width:9px;height:25px;background:#071a2c;border:1px solid #36f5d0;box-shadow:0 0 8px #278dff}.ear-left{left:-4px}.ear-right{right:-4px}
+.bot-neck{width:27px;height:18px;left:101px;top:108px;border-radius:4px}
+.bot-body{left:61px;top:121px;width:108px;height:102px;border-radius:18px 18px 28px 28px;clip-path:polygon(15% 0,85% 0,100% 20%,88% 100%,12% 100%,0 20%)}
+.bot-chest{position:absolute;width:27px;height:27px;left:40px;top:20px;border:2px solid #9bffff;border-radius:50%;box-shadow:0 0 15px #36f5d0,inset 0 0 10px #36f5d0;background:#168dff55}
+.bot-line{position:absolute;height:2px;width:43px;background:#6df8ff;left:32px;box-shadow:0 0 7px #36f5d0}.line-a{top:63px}.line-b{top:70px;width:29px;left:39px}
+.bot-arm{top:130px;width:30px;height:65px;border-radius:15px;transform-origin:15px 10px}
+.arm-left{left:35px;transform:rotate(13deg);animation:bot-arm-left 3.4s ease-in-out infinite}.arm-right{right:35px;transform:rotate(-13deg);animation:bot-arm-right 3.1s ease-in-out infinite}
+.bot-joint{position:absolute;width:25px;height:27px;top:52px;left:2px;border-radius:9px;background:linear-gradient(135deg,#5cecff,#073151 70%,#36f5d0);border:1px solid #7cecff}
+.bot-forearm{position:absolute;top:72px;left:4px;width:22px;height:45px;border-radius:9px;background:linear-gradient(90deg,#0a2a44,#278dff,#0a2a44);border:1px solid #6ceeff}
+.bot-hand{position:absolute;top:111px;left:3px;width:24px;height:22px;border-radius:7px;background:#0b3150;border:1px solid #6ceeff;box-shadow:0 0 9px #278dff}
+.bot-hip{left:77px;top:214px;width:76px;height:26px;border-radius:8px;background:linear-gradient(90deg,#0b2942,#38b8e8,#09223a)}
+.bot-leg{top:232px;width:31px;height:64px;border-radius:10px;transform-origin:top center}
+.leg-left{left:81px;animation:bot-leg-left 4s ease-in-out infinite}.leg-right{right:81px;animation:bot-leg-right 4s ease-in-out infinite}
+.bot-knee{position:absolute;top:48px;left:3px;width:25px;height:16px;border-radius:5px;background:#082844;border:1px solid #56dcff}
+.bot-foot{position:absolute;bottom:-10px;left:-5px;width:42px;height:18px;border-radius:5px 10px 4px 4px;background:linear-gradient(90deg,#08243b,#208fc2,#061a2d);border:1px solid #62eaff}
+.robot-scan{z-index:4}
+@keyframes bot-hover{0%,100%{transform:translateY(0) rotateY(-5deg)}50%{transform:translateY(-7px) rotateY(5deg)}}
+@keyframes bot-glint{0%,20%{transform:translateX(-100%)}70%,100%{transform:translateX(100%)}}
+@keyframes bot-head-turn{0%,100%{transform:rotateY(-4deg)}50%{transform:rotateY(5deg)}}
+@keyframes bot-arm-left{0%,100%{transform:rotate(13deg)}50%{transform:rotate(22deg)}}
+@keyframes bot-arm-right{0%,100%{transform:rotate(-13deg)}50%{transform:rotate(-24deg)}}
+@keyframes bot-leg-left{0%,100%{transform:rotate(1deg)}50%{transform:rotate(-3deg)}}
+@keyframes bot-leg-right{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(3deg)}}
+@media(max-width:460px){.robot-figure{transform:scale(.85);transform-origin:center center}}
+@media(prefers-reduced-motion:reduce){.robot-figure,.bot-head,.arm-left,.arm-right,.leg-left,.leg-right{animation:none}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SEIF NEXUS","url":"https://saiftt942-max.github.io/"}</script>
 </head>
@@ -73,9 +109,13 @@ a:hover{transition:color .2s}
 <a class="skip" href="#main">Skip to content</a>
 <header><div class="wrap nav"><a class="logo" href="#home" aria-label="SEIF NEXUS home">SEIF<span>✳</span>NEXUS®</a><button class="menu" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">☰</button><nav class="navlinks" id="navlinks" aria-label="Main navigation"><a href="#explore">Explore</a><a href="#vision">Vision</a><a href="#contact">Contact</a><a class="social" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Instagram ↗</a></nav></div></header>
 <main id="main">
-<section class="wrap hero" id="home"><div class="intro"><div class="overline"><span class="dot"></span> Independent digital universe · 2026</div><h1>BUILD<span>BEYOND.</span></h1><p>This is <b>SEIF NEXUS</b> — a personal digital playground where bold ideas, emerging technology, and imagination collide. Not another page on the internet. A signal from what comes next.</p><div class="buttons"><a class="btn btn-main" href="#explore">Enter the nexus <span>↘</span></a><a class="btn btn-alt" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Follow my journey ↗</a></div><div class="micro"><div><strong>01—∞</strong>Always exploring</div><div><strong>AI / X</strong>Ideas in motion</div><div><strong>NO LIMITS</strong>Future mindset</div></div></div><div class="art" aria-label="Abstract animated lime and violet digital core"><div class="cross"></div><div class="robot-stage" id="robot-stage" role="img" aria-label="Animated blue holographic 3D humanoid robot">
-<canvas id="robot-canvas" aria-hidden="true"></canvas>
-<div class="robot-scan"></div><div class="robot-floor"></div>
+<section class="wrap hero" id="home"><div class="intro"><div class="overline"><span class="dot"></span> Independent digital universe · 2026</div><h1>BUILD<span>BEYOND.</span></h1><p>This is <b>SEIF NEXUS</b> — a personal digital playground where bold ideas, emerging technology, and imagination collide. Not another page on the internet. A signal from what comes next.</p><div class="buttons"><a class="btn btn-main" href="#explore">Enter the nexus <span>↘</span></a><a class="btn btn-alt" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Follow my journey ↗</a></div><div class="micro"><div><strong>01—∞</strong>Always exploring</div><div><strong>AI / X</strong>Ideas in motion</div><div><strong>NO LIMITS</strong>Future mindset</div></div></div><div class="art" aria-label="Abstract animated lime and violet digital core"><div class="cross"></div><div class="robot-stage" id="robot-stage" role="img" aria-label="Animated blue holographic humanoid robot">
+<div class="robot-figure" aria-hidden="true">
+<div class="bot-antenna"></div><div class="bot-head"><i class="bot-eye eye-left"></i><i class="bot-eye eye-right"></i><i class="bot-ear ear-left"></i><i class="bot-ear ear-right"></i></div>
+<div class="bot-neck"></div><div class="bot-body"><i class="bot-chest"></i><i class="bot-line line-a"></i><i class="bot-line line-b"></i></div>
+<div class="bot-arm arm-left"><i class="bot-joint"></i><i class="bot-forearm"></i><i class="bot-hand"></i></div><div class="bot-arm arm-right"><i class="bot-joint"></i><i class="bot-forearm"></i><i class="bot-hand"></i></div>
+<div class="bot-hip"></div><div class="bot-leg leg-left"><i class="bot-knee"></i><i class="bot-foot"></i></div><div class="bot-leg leg-right"><i class="bot-knee"></i><i class="bot-foot"></i></div>
+</div><div class="robot-scan"></div><div class="robot-floor"></div>
 </div><span class="orb-label label-one">NEXUS CORE / ONLINE</span><span class="orb-label label-two">IMAGINATION // ACTIVE</span></div></section>
 <div class="marquee" aria-hidden="true"><span>✳ CREATE WITHOUT LIMITS　 /　 BUILD WHAT'S NEXT　 /　 STAY CURIOUS　 /　 CREATE WITHOUT LIMITS　 /　 BUILD WHAT'S NEXT　 /　 STAY CURIOUS　 /　</span></div>
 <section class="wrap block" id="explore"><div class="section-top"><div><div class="tag">01 / What drives the signal</div><h2>Curiosity is<br>the interface.</h2></div><p>Three directions. One mindset: explore the unknown, learn constantly, and turn interesting ideas into real things.</p></div><div class="grid"><article class="tile"><div class="num">FIELD_001 / INTELLIGENCE</div><div class="symbol">✳</div><h3>Artificial Intelligence</h3><p>Discovering intelligent tools and new ways to turn complex ideas into useful, human-centred experiences.</p></article><article class="tile"><div class="num">FIELD_002 / DIGITAL CRAFT</div><div class="symbol">⌘</div><h3>Creative Technology</h3><p>Expressive interfaces, experimental code, and digital details made to feel as thoughtful as they look.</p></article><article class="tile"><div class="num">FIELD_003 / TOMORROW</div><div class="symbol">↗</div><h3>Future Thinking</h3><p>Connecting unexpected dots, questioning the default, and staying open to possibilities still taking shape.</p></article></div></section>
@@ -86,89 +126,5 @@ a:hover{transition:color .2s}
 <script>
 (()=>{document.getElementById('year').textContent=new Date().getFullYear();const b=document.querySelector('.menu'),n=document.getElementById('navlinks');function close(){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Open menu');b.textContent='☰'}b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(o));b.setAttribute('aria-label',o?'Close menu':'Open menu');b.textContent=o?'×':'☰';n.classList.toggle('open',o)});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()})})();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
-<script>
-(()=> {
- const canvas=document.getElementById('robot-canvas'), host=document.getElementById('robot-stage');
- if(!canvas||!host||!window.THREE)return;
- const THREE=window.THREE;
- const scene=new THREE.Scene();
- const camera=new THREE.PerspectiveCamera(34,1,.1,100);
- camera.position.set(0,1.05,7.4);
- const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
- renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
- renderer.setClearColor(0x000000,0);
- renderer.outputColorSpace=THREE.SRGBColorSpace;
- scene.add(new THREE.AmbientLight(0x64dfff,1.9));
- const key=new THREE.PointLight(0x16bfff,3.8,12);key.position.set(3,3,4);scene.add(key);
- const teal=new THREE.PointLight(0x36f5d0,2.6,10);teal.position.set(-3,0,2);scene.add(teal);
- const blueMat=new THREE.MeshStandardMaterial({color:0x1389bd,metalness:.65,roughness:.24,emissive:0x006cba,emissiveIntensity:.75,transparent:true,opacity:.82});
- const edgeMat=new THREE.MeshBasicMaterial({color:0x4cecff,wireframe:true,transparent:true,opacity:.23});
- const darkMat=new THREE.MeshStandardMaterial({color:0x071a2c,metalness:.8,roughness:.2,emissive:0x003b69,emissiveIntensity:.9});
- const glowMat=new THREE.MeshBasicMaterial({color:0x48f4ff});
- const robot=new THREE.Group();scene.add(robot);
- function part(parent,geo,mat,pos,scale){const m=new THREE.Mesh(geo,mat);m.position.set(...pos);if(scale)m.scale.set(...scale);parent.add(m);if(mat===blueMat){const wire=new THREE.Mesh(geo,edgeMat);wire.position.copy(m.position);wire.scale.copy(m.scale).multiplyScalar(1.012);parent.add(wire)}return m}
- function sphere(parent,pos,scale,mat=blueMat){return part(parent,new THREE.SphereGeometry(1,24,16),mat,pos,scale)}
- function box(parent,pos,scale,mat=blueMat,bevel=true){return part(parent,new THREE.BoxGeometry(...scale),mat,pos)}
- // pelvis and torso
- part(robot,new THREE.CapsuleGeometry(.34,.45,5,12),blueMat,[0,-.25,0],[1,1,.72]);
- part(robot,new THREE.CapsuleGeometry(.47,.52,5,16),blueMat,[0,.43,0],[1,.95,.7]);
- part(robot,new THREE.BoxGeometry(.48,.32,.09),darkMat,[0,.42,.39]);
- const chest=sphere(robot,[0,.43,.46],[.13,.13,.035],glowMat);
- // neck and head pivot
- part(robot,new THREE.CylinderGeometry(.12,.16,.22,16),darkMat,[0,.91,0]);
- const headPivot=new THREE.Group();headPivot.position.set(0,1.22,0);robot.add(headPivot);
- part(headPivot,new THREE.BoxGeometry(.88,.66,.62),blueMat,[0,0,0]);
- part(headPivot,new THREE.BoxGeometry(.72,.46,.05),darkMat,[0,-.015,.32]);
- // visor glow eyes
- const eye1=sphere(headPivot,[-.19,.035,.36],[.105,.055,.025],glowMat);
- const eye2=sphere(headPivot,[.19,.035,.36],[.105,.055,.025],glowMat);
- // head antenna
- part(headPivot,new THREE.CylinderGeometry(.025,.035,.2,10),glowMat,[0,.42,0]);
- sphere(headPivot,[0,.54,0],[.07,.07,.07],glowMat);
- // side ear modules
- for(const x of [-.5,.5]){part(headPivot,new THREE.CylinderGeometry(.12,.12,.12,16),darkMat,[x,0,0],[1,1,1]);sphere(headPivot,[x*1.08,0,.02],[.08,.08,.08],glowMat)}
- // arms with shoulder pivots, upper/lower sections and palms
- const arms=[];
- for(const side of [-1,1]){
-  const pivot=new THREE.Group();pivot.position.set(side*.48,.68,0);robot.add(pivot);
-  sphere(pivot,[0,0,0],[.17,.18,.17],darkMat);
-  part(pivot,new THREE.CapsuleGeometry(.105,.35,4,10),blueMat,[side*.04,-.28,0],[1,1,.9]);
-  sphere(pivot,[side*.04,-.5,0],[.12,.12,.12],glowMat);
-  part(pivot,new THREE.CapsuleGeometry(.09,.3,4,10),blueMat,[side*.05,-.7,.02],[1,1,.9]);
-  sphere(pivot,[side*.05,-.89,.08],[.13,.13,.08],blueMat);
-  for(let i=0;i<3;i++)part(pivot,new THREE.CapsuleGeometry(.025,.1,3,6),glowMat,[side*.05+(i-1)*.065,-1.02,.09],[1,1,1]);
-  arms.push({pivot,side});
- }
- // legs
- for(const side of [-1,1]){
-  const hipY=-.67,x=side*.22;
-  sphere(robot,[x,hipY,0],[.17,.17,.16],darkMat);
-  part(robot,new THREE.CapsuleGeometry(.12,.37,4,10),blueMat,[x,-.96,0],[1,1,.9]);
-  sphere(robot,[x,-1.2,.015],[.12,.12,.12],glowMat);
-  part(robot,new THREE.CapsuleGeometry(.095,.29,4,10),blueMat,[x,-1.42,.02],[1,1,.9]);
-  part(robot,new THREE.BoxGeometry(.23,.12,.34),darkMat,[x,-1.62,.09]);
- }
- // floating hologram particles
- const particles=new THREE.Group();scene.add(particles);
- for(let i=0;i<34;i++){const p=new THREE.Mesh(new THREE.BoxGeometry(.025,.025,.025),new THREE.MeshBasicMaterial({color:i%2?0x36f5d0:0x278dff,transparent:true,opacity:.7}));p.position.set((Math.random()-.5)*3.2,(Math.random()-.5)*3.5,(Math.random()-.5)*.7);p.userData.phase=Math.random()*6.28;particles.add(p)}
- let targetX=0,targetY=0,mouseX=0,mouseY=0;
- host.addEventListener('pointermove',e=>{const r=host.getBoundingClientRect();targetY=((e.clientX-r.left)/r.width-.5)*.55;targetX=((e.clientY-r.top)/r.height-.5)*-.28});
- host.addEventListener('pointerleave',()=>{targetX=0;targetY=0});
- function resize(){const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
- new ResizeObserver(resize).observe(host);resize();
- const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;const clock=new THREE.Clock();
- function animate(){requestAnimationFrame(animate);const t=clock.getElapsedTime();mouseX+=(targetX-mouseX)*.035;mouseY+=(targetY-mouseY)*.035;
-  robot.rotation.y=mouseY+Math.sin(t*.55)*.12;robot.rotation.x=mouseX;robot.position.y=Math.sin(t*1.25)*.065;
-  headPivot.rotation.y=Math.sin(t*.8)*.16+mouseY*.45;headPivot.rotation.x=mouseX*.45;
-  arms[0].pivot.rotation.z=-.13+Math.sin(t*1.1)*.07;
-  arms[1].pivot.rotation.z=-.35+Math.sin(t*1.7)*.13;arms[1].pivot.rotation.x=Math.sin(t*1.3)*.12;
-  chest.material.emissiveIntensity=1.1+Math.sin(t*3)*.5;
-  particles.children.forEach(p=>{p.position.y+=Math.sin(t+p.userData.phase)*.0008;p.material.opacity=.35+(Math.sin(t*2+p.userData.phase)+1)*.25});
-  if(reduced){robot.rotation.y=0;robot.rotation.x=0;robot.position.y=0}
-  renderer.render(scene,camera)
- }
- animate();
-})();
-</script>
+
 </body></html>
