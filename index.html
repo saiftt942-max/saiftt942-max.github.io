@@ -230,3 +230,40 @@ a:hover{transition:color .2s}
 @media(max-width:400px){.editorial-gallery .holo-visual.photo{height:155px}}
 @media(prefers-reduced-motion:reduce){.editorial-gallery .holo-card:before,.editorial-gallery .holo-visual.photo,.editorial-gallery .photo:after{animation:none}}
 </style>
+
+<style>
+/* Performance pass: keep scrolling fluid on phones and desktops */
+html{scroll-behavior:auto}
+header{backdrop-filter:none;-webkit-backdrop-filter:none;background:#050b12f5}
+.hero:before{filter:none;opacity:.55}
+.tile,.holo-card{transition:transform .18s ease,border-color .18s ease}
+.editorial-gallery .holo-card{box-shadow:inset 0 0 18px #168dff08}
+.editorial-gallery .holo-card:before{display:none}
+.editorial-gallery .holo-visual.photo{animation:none;transform:none;box-shadow:inset 0 0 20px #168dff18}
+.editorial-gallery .photo:after{animation:none}
+.robot-stage,.robot-figure,.core,.orbit,.holo-visual:before{animation-duration:12s}
+@media(max-width:800px){
+  body:before{background-image:none}
+  header{backdrop-filter:none;-webkit-backdrop-filter:none}
+  .hero:before{display:none}
+  .holo-visual:before{animation:none}
+  .robot-stage,.robot-figure,.bot-head,.arm-left,.arm-right,.leg-left,.leg-right{animation-duration:8s}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
+</style>
+<script>
+/* Avoid repeatedly animating off-screen sections while scrolling */
+(()=> {
+ const animated = document.querySelectorAll('.robot-stage,.robot-figure,.bot-head,.arm-left,.arm-right,.leg-left,.leg-right,.core,.orbit,.holo-visual:before');
+ if (!('IntersectionObserver' in window)) return;
+ const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+   entry.target.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+  });
+ }, {rootMargin:'100px'});
+ animated.forEach(el => observer.observe(el));
+})();
+</script>
