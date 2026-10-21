@@ -205,3 +205,28 @@ a:hover{transition:color .2s}
 @media(max-width:420px){.editorial-gallery .holo-visual.photo{height:175px}.editorial-gallery .holo-card{animation-duration:7s}}
 @media(prefers-reduced-motion:reduce){.editorial-gallery .holo-card,.editorial-gallery .photo:after{animation:none!important;transition:none!important}}
 </style>
+
+<style>
+/* SIFE cinematic hologram gallery */
+#explore .section-top h2{ text-shadow:0 0 28px #278dff26 }
+.editorial-gallery{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;perspective:1200px}
+.editorial-gallery .holo-card{padding:12px 12px 19px;min-height:0;background:linear-gradient(155deg,#071b2be8,#030a13f5);border:1px solid #56cfff48;box-shadow:inset 0 0 25px #168dff0a,0 12px 40px #0005;transform-style:preserve-3d}
+.editorial-gallery .holo-card:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;background:linear-gradient(115deg,transparent 15%,#8ffaff0b 45%,transparent 70%);transform:translateX(-110%);animation:pod-glint 8s ease-in-out infinite}
+.editorial-gallery .holo-card:nth-child(2):before{animation-delay:1s}.editorial-gallery .holo-card:nth-child(3):before{animation-delay:2s}.editorial-gallery .holo-card:nth-child(4):before{animation-delay:3s}.editorial-gallery .holo-card:nth-child(5):before{animation-delay:4s}
+.editorial-gallery .holo-card:hover{transform:translateY(-7px);border-color:#66f7ff;box-shadow:0 18px 48px #007dff20,0 0 28px #36f5d01a}
+.editorial-gallery .holo-visual.photo{height:260px;margin:12px 0 16px;border:1px solid #6ceaff55;box-shadow:inset 0 0 30px #168dff35,0 0 20px #168dff14;isolation:isolate;transform:translateZ(12px);animation:pod-breathe 5s ease-in-out infinite}
+.editorial-gallery .holo-card:nth-child(2) .holo-visual{animation-delay:.5s}.editorial-gallery .holo-card:nth-child(3) .holo-visual{animation-delay:1s}.editorial-gallery .holo-card:nth-child(4) .holo-visual{animation-delay:1.5s}.editorial-gallery .holo-card:nth-child(5) .holo-visual{animation-delay:2s}
+.editorial-gallery .photo:before{background:linear-gradient(180deg,#03101a15 10%,#03101a05 42%,#020711d9 100%),linear-gradient(90deg,#168dff1b,transparent 35%,#36f5d010)}
+.editorial-gallery .photo:after{inset:0;border:1px solid #8df8ff25;background:repeating-linear-gradient(to bottom,transparent 0 5px,#8befff12 6px,#8befff12 7px);mask-image:linear-gradient(transparent,#000 8%,#000 94%,transparent);animation:scan-down 7s linear infinite}
+.editorial-gallery .holo-card .num{position:relative;z-index:4;font-size:9px;letter-spacing:.13em;color:#83eaff}
+.editorial-gallery .holo-card h3{position:relative;z-index:4;font-size:clamp(15px,1.4vw,20px);line-height:1.2;margin:0 0 8px;color:#eafaff}
+.editorial-gallery .holo-card p{position:relative;z-index:4;font-size:11px;line-height:1.6}
+.editorial-gallery .holo-card:after{z-index:4;color:#71eaff}
+@keyframes pod-glint{0%,65%{transform:translateX(-110%)}85%,100%{transform:translateX(110%)}}
+@keyframes pod-breathe{0%,100%{box-shadow:inset 0 0 30px #168dff22,0 0 15px #168dff12}50%{box-shadow:inset 0 0 36px #168dff40,0 0 25px #36f5d018}}
+@keyframes scan-down{0%{background-position:0 -80px}100%{background-position:0 180px}}
+@media(max-width:1050px){.editorial-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.editorial-gallery .holo-visual.photo{height:220px}}
+@media(max-width:650px){.editorial-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.editorial-gallery .holo-visual.photo{height:190px}}
+@media(max-width:400px){.editorial-gallery .holo-visual.photo{height:155px}}
+@media(prefers-reduced-motion:reduce){.editorial-gallery .holo-card:before,.editorial-gallery .holo-visual.photo,.editorial-gallery .photo:after{animation:none}}
+</style>
