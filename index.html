@@ -66,7 +66,7 @@ a:hover{transition:color .2s}
  <filter id="nexusGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>
 <circle cx="220" cy="220" r="166" fill="none" stroke="#278dff" stroke-opacity=".23" stroke-width="1"/>
-<g fill="none" stroke-width="1.7" filter="url(#nexusGlow)">
+<g class="orbital-rings" fill="none" stroke-width="1.7" filter="url(#nexusGlow)">
  <ellipse cx="220" cy="220" rx="165" ry="58" stroke="#36f5d0" stroke-opacity=".9"/>
  <ellipse cx="220" cy="220" rx="165" ry="58" stroke="#65bfff" stroke-opacity=".9" transform="rotate(60 220 220)"/>
  <ellipse cx="220" cy="220" rx="165" ry="58" stroke="#278dff" stroke-opacity=".95" transform="rotate(-60 220 220)"/>
@@ -88,7 +88,7 @@ a:hover{transition:color .2s}
 </script>
 </body></html>
 /* Refined orbital emblem: balanced geometry and a precise circular S medallion */
-.atom-art{position:relative;z-index:1;width:min(39vw,460px);height:auto;overflow:visible;filter:drop-shadow(0 0 26px #278dff15);animation:atomFloat 7s ease-in-out infinite}
+.atom-art{position:relative;z-index:1;width:min(39vw,460px);height:auto;overflow:visible;filter:drop-shadow(0 0 26px #278dff15);animation:atomFloat 7s ease-in-out infinite}.atom-art .orbital-rings{transform-box:view-box;transform-origin:220px 220px;animation:orbitalSpin 18s linear infinite}@keyframes orbitalSpin{to{transform:rotate(360deg)}}
 @keyframes atomFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @media(max-width:800px){.atom-art{width:min(78vw,390px)}}
-@media(prefers-reduced-motion:reduce){.atom-art{animation:none}}
+@media(prefers-reduced-motion:reduce){.atom-art,.atom-art .orbital-rings{animation:none}}
