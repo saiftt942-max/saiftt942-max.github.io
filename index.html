@@ -53,6 +53,19 @@ h1 span{color:#36f5d0;text-shadow:0 0 45px #36f5d01c}
 a:hover{transition:color .2s}
 ::selection{background:#36f5d0;color:#050b12}
 @media(max-width:800px){.navlinks{background:#050b12f7}}
+
+/* Animated holographic robot */
+.robot-stage{position:relative;z-index:1;width:min(39vw,460px);height:min(39vw,460px);min-height:320px;display:grid;place-items:center;isolation:isolate;perspective:900px;animation:robotFloat 5s ease-in-out infinite}
+#robot-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;display:block}
+.robot-stage:before{content:"";position:absolute;width:58%;height:15%;bottom:7%;border-radius:50%;background:#168dff35;filter:blur(22px);z-index:0}
+.robot-scan{position:absolute;inset:7% 10%;z-index:3;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 9px,#7cecff0a 10px,#7cecff0a 11px);mask-image:linear-gradient(transparent,#000 15%,#000 85%,transparent);mix-blend-mode:screen}
+.robot-floor{position:absolute;width:75%;height:18%;bottom:7%;border:1px solid #36f5d0a8;border-radius:50%;transform:rotateX(64deg);box-shadow:0 0 18px #278dff7a,inset 0 0 18px #278dff45;z-index:1;animation:floorPulse 3s ease-in-out infinite}
+.robot-floor:before,.robot-floor:after{content:"";position:absolute;inset:12% 9%;border:1px solid #278dffb0;border-radius:50%}.robot-floor:after{inset:-22% 20%;border-color:#36f5d07a}
+@keyframes robotFloat{0%,100%{transform:translateY(0) rotateY(-3deg)}50%{transform:translateY(-10px) rotateY(3deg)}}
+@keyframes floorPulse{0%,100%{opacity:.65;filter:brightness(.8)}50%{opacity:1;filter:brightness(1.5)}}
+@media(max-width:800px){.robot-stage{width:min(78vw,390px);height:min(78vw,390px);min-height:280px}}
+@media(prefers-reduced-motion:reduce){.robot-stage,.robot-floor{animation:none}}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SEIF NEXUS","url":"https://saiftt942-max.github.io/"}</script>
 </head>
@@ -73,21 +86,6 @@ a:hover{transition:color .2s}
 <script>
 (()=>{document.getElementById('year').textContent=new Date().getFullYear();const b=document.querySelector('.menu'),n=document.getElementById('navlinks');function close(){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Open menu');b.textContent='☰'}b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(o));b.setAttribute('aria-label',o?'Close menu':'Open menu');b.textContent=o?'×':'☰';n.classList.toggle('open',o)});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()})})();
 </script>
-</body></html>
-
-<style>
-/* Animated holographic robot */
-.robot-stage{position:relative;z-index:1;width:min(39vw,460px);height:min(39vw,460px);min-height:320px;display:grid;place-items:center;isolation:isolate;perspective:900px;animation:robotFloat 5s ease-in-out infinite}
-#robot-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;display:block}
-.robot-stage:before{content:"";position:absolute;width:58%;height:15%;bottom:7%;border-radius:50%;background:#168dff35;filter:blur(22px);z-index:0}
-.robot-scan{position:absolute;inset:7% 10%;z-index:3;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 9px,#7cecff0a 10px,#7cecff0a 11px);mask-image:linear-gradient(transparent,#000 15%,#000 85%,transparent);mix-blend-mode:screen}
-.robot-floor{position:absolute;width:75%;height:18%;bottom:7%;border:1px solid #36f5d0a8;border-radius:50%;transform:rotateX(64deg);box-shadow:0 0 18px #278dff7a,inset 0 0 18px #278dff45;z-index:1;animation:floorPulse 3s ease-in-out infinite}
-.robot-floor:before,.robot-floor:after{content:"";position:absolute;inset:12% 9%;border:1px solid #278dffb0;border-radius:50%}.robot-floor:after{inset:-22% 20%;border-color:#36f5d07a}
-@keyframes robotFloat{0%,100%{transform:translateY(0) rotateY(-3deg)}50%{transform:translateY(-10px) rotateY(3deg)}}
-@keyframes floorPulse{0%,100%{opacity:.65;filter:brightness(.8)}50%{opacity:1;filter:brightness(1.5)}}
-@media(max-width:800px){.robot-stage{width:min(78vw,390px);height:min(78vw,390px);min-height:280px}}
-@media(prefers-reduced-motion:reduce){.robot-stage,.robot-floor{animation:none}}
-</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
 <script>
 (()=> {
@@ -173,9 +171,4 @@ a:hover{transition:color .2s}
  animate();
 })();
 </script>
-
-.atom-art{position:relative;z-index:1;width:min(39vw,460px);height:auto;overflow:visible;filter:drop-shadow(0 0 26px #278dff15);animation:atomFloat 7s ease-in-out infinite}.atom-art .orbital-rings{transform-box:view-box;transform-origin:220px 220px;animation:orbitalSpin 18s linear infinite}@keyframes orbitalSpin{to{transform:rotate(360deg)}}
-@keyframes atomFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@media(max-width:800px){.atom-art{width:min(78vw,390px)}}
-@media(prefers-reduced-motion:reduce){.atom-art,.atom-art .orbital-rings{animation:none}}
-</style>
+</body></html>
