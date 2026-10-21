@@ -1,214 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#070912">
-  <meta name="color-scheme" content="dark">
-  <meta name="description" content="SEIF NEXUS is a personal digital space exploring technology, AI, creative development, and ideas for what's next.">
-  <meta name="author" content="SEIF NEXUS">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="SEIF NEXUS — Beyond Reality">
-  <meta property="og:description" content="A personal digital frontier for technology, creative code, and future thinking.">
-  <meta property="og:url" content="https://saiftt942-max.github.io/">
-  <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="https://saiftt942-max.github.io/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23070912'/%3E%3Cpath d='M20 5 35 20 20 35 5 20Z' fill='none' stroke='%237ef4ff' stroke-width='1.5'/%3E%3Ctext x='20' y='25' font-size='15' text-anchor='middle' fill='%237ef4ff'%3ES%3C/text%3E%3C/svg%3E">
-  <title>SEIF NEXUS — Beyond Reality</title>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "SEIF NEXUS",
-    "url": "https://saiftt942-max.github.io/",
-    "description": "A personal digital space exploring technology, AI, creative development, and future thinking."
-  }
-  </script>
-  <style>
-    :root{color-scheme:dark;--bg:#070912;--panel:#0d1221;--cyan:#7ef4ff;--blue:#6887ff;--violet:#b56cff;--text:#f4f7ff;--muted:#a2aecb;--line:#ffffff19;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--width:1160px}
-    *,*::before,*::after{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:92px;background:var(--bg)}
-    body{margin:0;min-width:320px;background:radial-gradient(ellipse at 78% 9%,#4638a52a,transparent 38%),radial-gradient(ellipse at 8% 48%,#00d9ff10,transparent 34%),var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
-    body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.12;background-image:linear-gradient(#6b87ff24 1px,transparent 1px),linear-gradient(90deg,#6b87ff24 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(#000,transparent 85%)}
-    a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}::selection{background:#7ef4ff45;color:white}
-    .wrap{width:min(var(--width),calc(100% - 48px));margin-inline:auto}
-    .skip{position:absolute;top:-60px;left:16px;padding:10px 14px;background:var(--cyan);color:#071019;z-index:20}.skip:focus{top:12px}
-    .topbar{position:sticky;top:0;z-index:10;background:#070912d9;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}
-    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:inline-flex;align-items:center;gap:12px;font:800 12px var(--mono);letter-spacing:.16em;white-space:nowrap}
-    .mark{width:31px;height:31px;display:grid;place-items:center;border:1px solid var(--cyan);color:var(--cyan);transform:rotate(45deg);box-shadow:0 0 22px #7ef4ff18}.mark span{transform:rotate(-45deg);font-size:15px}
-    .brand-accent{color:var(--cyan)}
-    .nav-links{display:flex;align-items:center;gap:clamp(16px,2.8vw,32px)}
-    .nav-links a{color:var(--muted);font:10px var(--mono);letter-spacing:.11em;text-transform:uppercase;transition:color .2s}
-    .nav-links a:hover{color:var(--cyan)}
-    .nav-links .nav-cta{padding:10px 13px;border:1px solid #7ef4ff45;color:var(--cyan)}
-    .menu-toggle{display:none;width:42px;height:42px;border:1px solid var(--line);background:transparent;color:var(--text);font-size:20px;cursor:pointer}
-    .hero{min-height:min(780px,calc(100svh - 76px));padding:64px 0 76px;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:20px;position:relative}
-    .copy{position:relative;z-index:2}.eyebrow,.kicker{font:10px var(--mono);letter-spacing:.19em;text-transform:uppercase;color:var(--cyan)}
-    .eyebrow{display:flex;align-items:center;gap:10px}.pulse{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan);animation:pulse 2.2s infinite}
-    h1{font-size:clamp(52px,7.4vw,98px);line-height:.91;letter-spacing:-.075em;margin:25px 0 24px;font-weight:850}
-    h1 span{display:block;color:transparent;-webkit-text-stroke:1px #7ef4ffdc}
-    .desc{max-width:480px;color:var(--muted);font-size:16px;line-height:1.9}.desc strong{color:#edf2ff}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-    .btn{min-height:48px;padding:0 18px;display:inline-flex;align-items:center;justify-content:center;gap:12px;border:1px solid transparent;font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;transition:transform .2s,border-color .2s,background .2s}
-    .btn:hover{transform:translateY(-2px)}.primary{background:var(--cyan);color:#071019;box-shadow:0 0 25px #7ef4ff20}.secondary{border-color:#ffffff2b;background:#ffffff05}.secondary:hover{border-color:#7ef4ff70}
-    .stats{display:flex;gap:clamp(18px,3vw,32px);max-width:470px;margin-top:42px;padding-top:22px;border-top:1px solid var(--line)}
-    .stat strong{font:700 19px var(--mono)}.stat span{display:block;margin-top:6px;color:#8d9ab9;font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase}
-    .scene{height:min(620px,58vw);min-height:340px;position:relative;isolation:isolate}.scene canvas{display:block;width:100%;height:100%}
-    .glow{position:absolute;inset:8%;z-index:-1;border-radius:50%;background:radial-gradient(circle,#4d54ff2d,#00dbff09 52%,transparent 72%);filter:blur(3px)}
-    .ring{position:absolute;top:50%;left:50%;width:80%;aspect-ratio:1;border:1px solid #7ef4ff1c;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
-    .ring::before,.ring::after{content:"";position:absolute;background:#7ef4ff24}.ring::before{height:1px;width:125%;left:-12.5%;top:50%}.ring::after{width:1px;height:125%;top:-12.5%;left:50%}
-    .hud{position:absolute;padding:9px 12px;border:1px solid #7ef4ff35;background:#070912c9;backdrop-filter:blur(9px);font:9px/1.8 var(--mono);letter-spacing:.06em;color:#a1b0d0}.hud b{color:var(--cyan);font-weight:500}.hud-top{top:10%;right:0}.hud-bottom{bottom:10%;left:0}
-    .scroll-hint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font:9px var(--mono);letter-spacing:.2em;color:#7e8baa;white-space:nowrap}
-    section.content{padding:88px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:30px}
-    h2{font-size:clamp(32px,4.5vw,54px);line-height:1.08;letter-spacing:-.06em;margin:12px 0 0}
-    .note{max-width:370px;margin:0;color:var(--muted);font-size:13px;line-height:1.85}
-    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-    .card{min-height:225px;padding:25px;border:1px solid #ffffff16;background:linear-gradient(135deg,#131930db,#090c19d9);position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
-    .card:hover{transform:translateY(-4px);border-color:#7ef4ff60}.card::after{content:"";position:absolute;width:100px;height:100px;right:-52px;top:-52px;border:1px solid #7ef4ff40;border-radius:50%;box-shadow:0 0 0 14px #7ef4ff08,0 0 0 28px #7ef4ff05;pointer-events:none}
-    .index{font:10px var(--mono);color:var(--cyan);letter-spacing:.04em}h3{font-size:19px;line-height:1.3;margin:34px 0 12px}.card p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}
-    .manifesto{padding:clamp(28px,5vw,58px);border:1px solid #7ef4ff30;background:linear-gradient(110deg,#11182ecc,#0b0d1de8);position:relative;overflow:hidden}.manifesto::after{content:"N";position:absolute;right:20px;bottom:-100px;font:800 280px var(--mono);color:#7ef4ff07;pointer-events:none}
-    .manifesto p{position:relative;z-index:1;max-width:820px;font-size:clamp(21px,2.8vw,31px);line-height:1.55;color:#c6d0e8;letter-spacing:-.03em;margin:22px 0 0}.manifesto em{font-style:normal;color:var(--cyan)}
-    .contact{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding:32px 0;border-block:1px solid var(--line)}.contact h2{max-width:680px}
-    .footer{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:26px 0 34px;color:#8290ad;font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase}
-    .status{color:#75ffbb}.status::before{content:"●";margin-right:8px}
-    .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
-    @keyframes pulse{50%{opacity:.35}}
-    @media(max-width:850px){.nav-inner{height:70px}.menu-toggle{display:grid;place-items:center}.nav-links{display:none;position:absolute;top:69px;left:0;right:0;padding:18px 24px 24px;background:#070912f5;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:14px 4px}.nav-links .nav-cta{text-align:center;margin-top:8px}.hero{grid-template-columns:1fr;padding-top:48px;gap:0}.scene{height:min(520px,92vw);min-height:290px;margin-top:0}.stats{margin-top:30px}.scroll-hint{display:none}.cards{grid-template-columns:1fr}.card{min-height:180px}section.content{padding:65px 0}.section-head{align-items:start;flex-direction:column}.note{max-width:560px}}
-    @media(max-width:480px){.wrap{width:calc(100% - 32px)}.brand{font-size:10px;gap:9px}.mark{width:28px;height:28px}h1{font-size:clamp(48px,14.8vw,70px)}.desc{font-size:14px}.stats{gap:16px}.stat strong{font-size:16px}.stat span{font-size:8px;letter-spacing:.05em}.scene{min-height:260px}.hud{font-size:8px;padding:7px 9px}.actions .btn{flex:1 1 150px;padding-inline:12px;font-size:9px}.footer{font-size:8px}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#09090f">
+<meta name="description" content="SEIF NEXUS — a digital playground for technology, creative code, AI and future ideas.">
+<link rel="canonical" href="https://saiftt942-max.github.io/">
+<meta property="og:title" content="SEIF NEXUS — Build Beyond">
+<meta property="og:description" content="Curiosity meets the next dimension. Explore the digital world of SEIF NEXUS.">
+<meta property="og:url" content="https://saiftt942-max.github.io/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<title>SEIF NEXUS® — Build Beyond</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2309090f'/%3E%3Cpath d='M18 70 50 16 82 70 50 84Z' fill='none' stroke='%23c4ff3c' stroke-width='6'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:dark;--bg:#09090f;--panel:#111119;--lime:#c4ff3c;--purple:#a58bff;--white:#f4f3ee;--muted:#9b9ba8;--line:#ffffff20;--mono:ui-monospace,SFMono-Regular,Menlo,monospace;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--white);font-family:var(--sans);overflow-x:hidden}a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible{outline:2px solid var(--lime);outline-offset:4px}::selection{background:var(--lime);color:#09090f}.wrap{width:min(1220px,calc(100% - 48px));margin:auto}.skip{position:absolute;top:-80px;left:16px;background:var(--lime);color:#09090f;padding:12px;z-index:50}.skip:focus{top:12px}
+header{position:sticky;top:0;z-index:20;background:#09090fe8;backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{height:78px;display:flex;align-items:center;justify-content:space-between}.logo{font:900 16px var(--mono);letter-spacing:-.08em}.logo span{color:var(--lime)}.navlinks{display:flex;align-items:center;gap:32px;font:11px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:#c5c4cf}.navlinks a:hover{color:var(--lime)}.navlinks .social{padding:12px 16px;border:1px solid #c4ff3c70;color:var(--lime)}.menu{display:none;background:none;color:white;border:1px solid var(--line);padding:9px 12px;font-size:20px}
+.hero{min-height:calc(100svh - 78px);display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:20px;padding:70px 0 88px;position:relative}.hero:before{content:"";position:absolute;width:440px;height:440px;right:5%;top:14%;border-radius:50%;background:#a58bff17;filter:blur(90px);pointer-events:none}.intro{position:relative;z-index:2}.overline{display:flex;align-items:center;gap:10px;color:var(--lime);font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 18px var(--lime)}h1{font-size:clamp(64px,10.5vw,142px);line-height:.79;letter-spacing:-.105em;margin:35px 0 30px;font-weight:950}h1 span{display:block;color:var(--lime)}.intro p{max-width:500px;color:#b2b1bf;font-size:16px;line-height:1.9}.intro p b{color:var(--white)}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:52px;padding:0 19px;font:11px var(--mono);text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);transition:transform .2s,background .2s}.btn:hover{transform:translateY(-3px)}.btn-main{background:var(--lime);color:#09090f;border-color:var(--lime);font-weight:800}.btn-alt:hover{border-color:var(--purple)}.micro{display:flex;gap:25px;margin-top:46px;padding-top:21px;border-top:1px solid var(--line);max-width:470px}.micro div{font:9px var(--mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}.micro strong{display:block;font-size:19px;color:var(--white);margin-bottom:6px;letter-spacing:-.04em}
+.art{position:relative;min-height:480px;display:grid;place-items:center}.orbit{width:min(37vw,440px);aspect-ratio:1;border-radius:50%;position:relative;border:1px solid #a58bff55;transform:rotate(-24deg);animation:orbit 24s linear infinite}.orbit:before,.orbit:after{content:"";position:absolute;inset:10%;border:1px solid #c4ff3c66;border-radius:50%;transform:rotate(62deg) scaleX(.45)}.orbit:after{inset:-6% 18%;border-color:#a58bff85;transform:rotate(-45deg) scaleX(.5)}.core{position:absolute;inset:25%;display:grid;place-items:center;background:radial-gradient(circle at 35% 25%,#e5ff9b,#c4ff3c 16%,#5b6e27 40%,#171a18 70%);border-radius:34% 66% 61% 39% / 38% 40% 60% 62%;box-shadow:0 0 70px #c4ff3c30, inset -20px -25px 55px #000b;animation:morph 9s ease-in-out infinite alternate}.core:after{content:"N";font:900 clamp(65px,10vw,125px) var(--mono);letter-spacing:-.13em;color:#09090f;text-shadow:0 1px 0 #ffffff66;transform:rotate(24deg)}.orb-label{position:absolute;font:10px var(--mono);color:var(--lime);letter-spacing:.1em;background:#09090fe8;border:1px solid #c4ff3c50;padding:10px 12px}.label-one{top:13%;right:-1%}.label-two{bottom:14%;left:0;color:var(--purple);border-color:#a58bff60}.cross{position:absolute;width:95%;height:1px;background:#ffffff1c;top:50%;left:2.5%}.cross:after{content:"";position:absolute;width:1px;height:95px;background:#ffffff1c;left:50%;top:-47px}
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:17px 0;color:var(--lime);font:11px var(--mono);letter-spacing:.2em;white-space:nowrap}.marquee span{display:inline-block;min-width:100%;animation:marquee 26s linear infinite}
+section.block{padding:105px 0}.section-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:35px}.tag{color:var(--lime);font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase}.section-top h2,.vision h2{font-size:clamp(38px,6vw,72px);line-height:.95;letter-spacing:-.08em;margin:16px 0 0}.section-top p{max-width:350px;color:var(--muted);font-size:14px;line-height:1.8;margin:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tile{background:var(--panel);border:1px solid var(--line);padding:27px;min-height:250px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}.tile:hover{border-color:#c4ff3c80;transform:translateY(-5px)}.tile .num{font:11px var(--mono);color:var(--lime)}.tile .symbol{font-size:27px;margin-top:34px;color:var(--purple)}.tile h3{font-size:23px;letter-spacing:-.05em;margin:14px 0 10px}.tile p{color:var(--muted);font-size:13px;line-height:1.8;margin:0}.tile:after{content:"↗";position:absolute;right:25px;top:24px;color:#777684;font:18px var(--mono)}
+.vision{background:var(--lime);color:#09090f;padding:clamp(28px,7vw,86px);position:relative;overflow:hidden}.vision .tag{color:#313a18}.vision h2{max-width:900px}.vision p{font-size:clamp(17px,2.5vw,25px);line-height:1.65;max-width:800px;color:#31352a;margin:25px 0 0}.vision strong{color:#09090f}
+.contact{display:flex;justify-content:space-between;align-items:center;gap:30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:35px 0}.contact h2{font-size:clamp(32px,5vw,58px);line-height:1;letter-spacing:-.07em;max-width:700px;margin:14px 0 0}.foot{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:27px 0 36px;color:#858491;font:10px var(--mono);letter-spacing:.07em}.foot a:hover{color:var(--lime)}.foot .state{color:var(--lime)}
+@keyframes orbit{to{transform:rotate(336deg)}}@keyframes morph{from{border-radius:34% 66% 61% 39% / 38% 40% 60% 62%;transform:scale(.96) rotate(-8deg)}to{border-radius:60% 40% 35% 65% / 50% 60% 40% 50%;transform:scale(1.04) rotate(8deg)}}@keyframes marquee{to{transform:translateX(-100%)}}@media(max-width:800px){.nav{height:70px}.menu{display:block}.navlinks{display:none;position:absolute;top:69px;left:0;right:0;background:#09090ff7;padding:20px 24px 25px;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid var(--line)}.navlinks.open{display:flex}.navlinks a{padding:14px 0}.navlinks .social{text-align:center;margin-top:8px}.hero{grid-template-columns:1fr;padding-top:55px;gap:5px}.art{min-height:360px}.orbit{width:min(68vw,370px)}.section-top{align-items:start;flex-direction:column}.grid{grid-template-columns:1fr}.tile{min-height:205px}.tile .symbol{margin-top:22px}section.block{padding:70px 0}.contact{align-items:start;flex-direction:column}}@media(max-width:460px){.wrap{width:calc(100% - 32px)}h1{font-size:clamp(60px,18vw,86px)}.intro p{font-size:14px}.micro{gap:14px}.micro strong{font-size:16px}.art{min-height:310px}.orb-label{font-size:8px}.buttons .btn{flex:1}.foot{font-size:9px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SEIF NEXUS","url":"https://saiftt942-max.github.io/"}</script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="topbar">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#home" aria-label="SEIF NEXUS home"><span class="mark" aria-hidden="true"><span>✳</span></span><span>SEIF <span class="brand-accent">NEXUS</span></span></a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">☰</button>
-      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
-        <a href="#systems">Systems</a><a href="#vision">Vision</a><a href="#contact" class="nav-cta">Connect ↗</a>
-      </nav>
-    </div>
-  </header>
-  <main id="main" class="wrap">
-    <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="copy">
-        <div class="eyebrow"><span class="pulse" aria-hidden="true"></span> Independent digital entity / 2026</div>
-        <h1 id="hero-title">BEYOND<span>REALITY.</span></h1>
-        <p class="desc">Welcome to <strong>SEIF NEXUS</strong> — a personal digital frontier where technology, imagination, and identity converge. Exploring what comes next, one system at a time.</p>
-        <div class="actions"><a class="btn primary" href="#systems">Explore the nexus <span aria-hidden="true">↘</span></a><a class="btn secondary" href="#vision">Discover the vision <span aria-hidden="true">↗</span></a></div>
-        <div class="stats" aria-label="Guiding principles"><div class="stat"><strong>01 /</strong><span>Future focused</span></div><div class="stat"><strong>∞</strong><span>Ideas in orbit</span></div><div class="stat"><strong>AI+</strong><span>Human imagination</span></div></div>
-      </div>
-      <div class="scene" aria-label="Animated abstract digital core">
-        <div class="glow" aria-hidden="true"></div><div class="ring" aria-hidden="true"></div>
-        <canvas id="nexus-scene" aria-label="A rotating cyan and violet wireframe core" role="img"></canvas>
-        <div class="hud hud-top" aria-hidden="true">NEXUS CORE <b>● ACTIVE</b><br>COORD: NX-01 / 07.24</div>
-        <div class="hud hud-bottom" aria-hidden="true">VISUAL SYSTEM <b>ONLINE</b><br>EXPLORING THE UNKNOWN</div>
-      </div>
-      <div class="scroll-hint" aria-hidden="true">SCROLL TO EXPLORE ↓</div>
-    </section>
-    <section class="content" id="systems" aria-labelledby="systems-title">
-      <div class="section-head reveal"><div><div class="kicker">01 / Core systems</div><h2 id="systems-title">Built for the next.</h2></div><p class="note">A digital identity shaped by curiosity, experimentation, and the belief that the future is something we create.</p></div>
-      <div class="cards">
-        <article class="card reveal"><div class="index">SYS_001 / INTELLIGENCE</div><h3>Artificial Intelligence</h3><p>Exploring intelligent systems, emerging tools, and new ways to turn ambitious ideas into useful experiences.</p></article>
-        <article class="card reveal"><div class="index">SYS_002 / CREATION</div><h3>Digital Craft</h3><p>Interfaces with intention: precise details, expressive motion, and technology that feels alive without getting in the way.</p></article>
-        <article class="card reveal"><div class="index">SYS_003 / FRONTIER</div><h3>Future Thinking</h3><p>Looking beyond the obvious, connecting unexpected concepts, and staying curious about what has not been built yet.</p></article>
-      </div>
-    </section>
-    <section class="content" id="vision" aria-labelledby="vision-title">
-      <div class="manifesto reveal"><div class="kicker" id="vision-title">02 / Operating philosophy</div><p>“The future isn't a place we wait for. It's a <em>dimension we build</em> — with curiosity as our compass and imagination as our engine.”</p></div>
-    </section>
-    <section class="content" id="contact" aria-labelledby="contact-title">
-      <div class="contact reveal"><div><div class="kicker">03 / Open channel</div><h2 id="contact-title">Every new world starts with a signal.</h2></div><a class="btn primary" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer" aria-label="Connect with SEIF NEXUS on Instagram">Connect on Instagram <span aria-hidden="true">↗</span></a></div>
-    </section>
-  </main>
-  <footer class="footer wrap"><a class="brand" href="#home">SEIF <span class="brand-accent">NEXUS</span></a><span>© <span id="year">2026</span> SEIF NEXUS</span><span class="status">Interface ready</span></footer>
-  <script>
-    (() => {
-      const year = document.getElementById('year');
-      year.textContent = String(new Date().getFullYear());
-      const menuButton = document.querySelector('.menu-toggle');
-      const nav = document.getElementById('nav-links');
-      function closeMenu() {
-        nav.classList.remove('open');
-        menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.setAttribute('aria-label', 'Open navigation');
-        menuButton.textContent = '☰';
-      }
-      menuButton.addEventListener('click', () => {
-        const open = menuButton.getAttribute('aria-expanded') !== 'true';
-        menuButton.setAttribute('aria-expanded', String(open));
-        menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-        menuButton.textContent = open ? '×' : '☰';
-        nav.classList.toggle('open', open);
-      });
-      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-      document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const revealItems = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window && !reducedMotion.matches) {
-        const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-          }
-        }), { threshold: 0.12 });
-        revealItems.forEach(item => revealObserver.observe(item));
-      } else revealItems.forEach(item => item.classList.add('visible'));
-
-      // Lightweight Canvas artwork: no external 3D library or network request required.
-      const canvas = document.getElementById('nexus-scene');
-      const ctx = canvas && canvas.getContext('2d');
-      if (!ctx) return;
-      let width = 1, height = 1, frame = 0, running = false, pageVisible = !document.hidden, inView = true, time = 0;
-      const dpr = () => Math.min(window.devicePixelRatio || 1, 1.5);
-      const stars = Array.from({ length: 115 }, () => ({ x: Math.random(), y: Math.random(), z: .25 + Math.random() * .75, r: .35 + Math.random() * 1.1, phase: Math.random() * Math.PI * 2 }));
-      function resize() {
-        const rect = canvas.getBoundingClientRect();
-        width = Math.max(1, rect.width); height = Math.max(1, rect.height);
-        canvas.width = Math.round(width * dpr()); canvas.height = Math.round(height * dpr());
-        ctx.setTransform(dpr(), 0, 0, dpr(), 0, 0);
-        if (!running) drawFrame();
-      }
-      function drawFrame() {
-        ctx.clearRect(0, 0, width, height);
-        const x = width / 2, y = height / 2, radius = Math.min(width, height) * .255;
-        for (const star of stars) {
-          const alpha = .2 + .55 * Math.abs(Math.sin(time * 1.4 + star.phase)) * star.z;
-          ctx.fillStyle = 'rgba(126,244,255,' + alpha.toFixed(3) + ')';
-          ctx.beginPath(); ctx.arc(star.x * width, star.y * height, star.r * star.z, 0, Math.PI * 2); ctx.fill();
-        }
-        const glow = ctx.createRadialGradient(x, y, 0, x, y, radius * 1.8);
-        glow.addColorStop(0, '#6887ff30'); glow.addColorStop(1, '#6887ff00');
-        ctx.fillStyle = glow; ctx.fillRect(0, 0, width, height);
-        ctx.save(); ctx.translate(x, y); ctx.rotate(time * .32);
-        for (let i = 0; i < 3; i++) {
-          ctx.save(); ctx.rotate(i * Math.PI / 3); ctx.scale(1, .46 + i * .12);
-          ctx.strokeStyle = i === 1 ? '#b56cffc0' : '#7ef4ffbd'; ctx.lineWidth = 1;
-          ctx.beginPath(); ctx.ellipse(0, 0, radius * (1 + i * .17), radius * (1 + i * .17), 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
-        }
-        ctx.rotate(-time * .75); ctx.strokeStyle = '#7ef4ff'; ctx.lineWidth = 1.2; ctx.beginPath();
-        for (let i = 0; i <= 6; i++) { const angle = -Math.PI / 2 + i * Math.PI / 3, px = Math.cos(angle) * radius * .72, py = Math.sin(angle) * radius * .72; if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py); }
-        ctx.closePath(); ctx.stroke();
-        ctx.fillStyle = '#7ef4ff'; ctx.beginPath(); ctx.arc(0, 0, 2.4, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-      }
-      function tick() {
-        if (!running || !pageVisible || !inView) { running = false; return; }
-        time += .012; drawFrame(); frame = window.requestAnimationFrame(tick);
-      }
-      function start() { if (reducedMotion.matches || running || !pageVisible || !inView) return; running = true; frame = window.requestAnimationFrame(tick); }
-      function stop() { running = false; if (frame) window.cancelAnimationFrame(frame); frame = 0; }
-      if ('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas); else window.addEventListener('resize', resize, { passive: true });
-      if ('IntersectionObserver' in window) {
-        const sceneObserver = new IntersectionObserver(entries => { inView = entries[0].isIntersecting; if (inView) start(); else stop(); });
-        sceneObserver.observe(canvas);
-      }
-      document.addEventListener('visibilitychange', () => { pageVisible = !document.hidden; if (pageVisible) start(); else stop(); });
-      reducedMotion.addEventListener?.('change', () => { if (reducedMotion.matches) { stop(); drawFrame(); } else start(); });
-      resize();
-      if (reducedMotion.matches) drawFrame(); else start();
-      window.addEventListener('pagehide', stop, { once: true });
-    })();
-  </script>
-</body>
-</html>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap nav"><a class="logo" href="#home" aria-label="SEIF NEXUS home">SEIF<span>✳</span>NEXUS®</a><button class="menu" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">☰</button><nav class="navlinks" id="navlinks" aria-label="Main navigation"><a href="#explore">Explore</a><a href="#vision">Vision</a><a href="#contact">Contact</a><a class="social" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Instagram ↗</a></nav></div></header>
+<main id="main">
+<section class="wrap hero" id="home"><div class="intro"><div class="overline"><span class="dot"></span> Independent digital universe · 2026</div><h1>BUILD<span>BEYOND.</span></h1><p>This is <b>SEIF NEXUS</b> — a personal digital playground where bold ideas, emerging technology, and imagination collide. Not another page on the internet. A signal from what comes next.</p><div class="buttons"><a class="btn btn-main" href="#explore">Enter the nexus <span>↘</span></a><a class="btn btn-alt" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Follow my journey ↗</a></div><div class="micro"><div><strong>01—∞</strong>Always exploring</div><div><strong>AI / X</strong>Ideas in motion</div><div><strong>NO LIMITS</strong>Future mindset</div></div></div><div class="art" aria-label="Abstract animated lime and violet digital core"><div class="cross"></div><div class="orbit"><div class="core"></div></div><span class="orb-label label-one">NEXUS CORE / ONLINE</span><span class="orb-label label-two">IMAGINATION // ACTIVE</span></div></section>
+<div class="marquee" aria-hidden="true"><span>✳ THINK DIFFERENTLY　 /　 BUILD WHAT'S NEXT　 /　 STAY CURIOUS　 /　 THINK DIFFERENTLY　 /　 BUILD WHAT'S NEXT　 /　 STAY CURIOUS　 /　</span></div>
+<section class="wrap block" id="explore"><div class="section-top"><div><div class="tag">01 / What drives the signal</div><h2>Curiosity is<br>the interface.</h2></div><p>Three directions. One mindset: explore the unknown, learn constantly, and turn interesting ideas into real things.</p></div><div class="grid"><article class="tile"><div class="num">FIELD_001 / INTELLIGENCE</div><div class="symbol">✳</div><h3>Artificial Intelligence</h3><p>Discovering intelligent tools and new ways to turn complex ideas into useful, human-centred experiences.</p></article><article class="tile"><div class="num">FIELD_002 / DIGITAL CRAFT</div><div class="symbol">⌘</div><h3>Creative Technology</h3><p>Expressive interfaces, experimental code, and digital details made to feel as thoughtful as they look.</p></article><article class="tile"><div class="num">FIELD_003 / TOMORROW</div><div class="symbol">↗</div><h3>Future Thinking</h3><p>Connecting unexpected dots, questioning the default, and staying open to possibilities still taking shape.</p></article></div></section>
+<section class="wrap block" id="vision"><div class="vision"><div class="tag">02 / The operating philosophy</div><h2>The future doesn't arrive.<br>We make it real.</h2><p>Every breakthrough starts as a question. Keep your mind open, your ideas ambitious, and your next move <strong>unexpected.</strong></p></div></section>
+<section class="wrap block" id="contact"><div class="contact"><div><div class="tag">03 / Open channel</div><h2>Got a signal?<br>Let's connect.</h2></div><a class="btn btn-main" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Connect on Instagram <span>↗</span></a></div></section>
+</main>
+<footer class="wrap foot"><a class="logo" href="#home">SEIF<span>✳</span>NEXUS®</a><span>© <span id="year"></span> SEIF NEXUS</span><a class="state" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">INSTAGRAM / @SS__GH_RF06 ↗</a></footer>
+<script>
+(()=>{document.getElementById('year').textContent=new Date().getFullYear();const b=document.querySelector('.menu'),n=document.getElementById('navlinks');function close(){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Open menu');b.textContent='☰'}b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(o));b.setAttribute('aria-label',o?'Close menu':'Open menu');b.textContent=o?'×':'☰';n.classList.toggle('open',o)});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()})})();
+</script>
+</body></html>
