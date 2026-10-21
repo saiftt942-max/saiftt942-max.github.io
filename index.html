@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#050b12">
-<meta name="description" content="ss__gh_rf06 — a digital playground for technology, creative code, AI and future ideas.">
+<meta name="description" content="SIFE — a digital playground for technology, creative code, AI and future ideas.">
 <link rel="canonical" href="https://saiftt942-max.github.io/">
-<meta property="og:title" content="ss__gh_rf06 — Beyond the Ordinary">
-<meta property="og:description" content="Curiosity meets the next dimension. Explore the digital world of ss__gh_rf06.">
+<meta property="og:title" content="SIFE — Beyond the Ordinary">
+<meta property="og:description" content="Curiosity meets the next dimension. Explore the digital world of SIFE.">
 <meta property="og:url" content="https://saiftt942-max.github.io/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<title>ss__gh_rf06® — Beyond the Ordinary</title>
+<title>SIFE® — Beyond the Ordinary</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2309090f'/%3E%3Cpath d='M18 70 50 16 82 70 50 84Z' fill='none' stroke='%23c4ff3c' stroke-width='6'/%3E%3C/svg%3E">
 <style>
 :root{color-scheme:dark;--bg:#050b12;--panel:#0b171f;--lime:#36f5d0;--purple:#278dff;--white:#edfbff;--muted:#9bb3bf;--line:#9beeff24;--mono:ui-monospace,SFMono-Regular,Menlo,monospace;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -102,27 +102,50 @@ a:hover{transition:color .2s}
 @keyframes bot-leg-right{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(3deg)}}
 @media(max-width:460px){.robot-figure{transform:scale(.85);transform-origin:center center}}
 @media(prefers-reduced-motion:reduce){.robot-figure,.bot-head,.arm-left,.arm-right,.leg-left,.leg-right{animation:none}}
+
+/* Holographic gallery */
+.holo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.holo-card{min-width:0;background:linear-gradient(155deg,#0d1c2be8,#07111be8);border:1px solid #62eaff2b;padding:18px 16px 22px;overflow:hidden;position:relative;transition:transform .3s,border-color .3s}
+.holo-card:hover{transform:translateY(-6px);border-color:#36f5d0a8}
+.holo-card h3{font-size:19px;letter-spacing:-.04em;margin:10px 0 0}
+.holo-visual{height:170px;display:grid;place-items:center;position:relative;color:#72f6ff;filter:drop-shadow(0 0 9px #278dff85);isolation:isolate}
+.holo-visual:before{content:"";position:absolute;width:116px;height:116px;border:1px solid #36f5d065;border-radius:50%;box-shadow:0 0 28px #278dff25,inset 0 0 24px #278dff15;animation:holo-spin 12s linear infinite}
+.holo-visual:after{content:"";position:absolute;inset:15px 0;background:repeating-linear-gradient(to bottom,transparent 0 6px,#8ffaff0c 7px 8px);pointer-events:none}
+.holo-visual svg{width:100%;height:145px;max-width:180px;overflow:visible;animation:holo-float 4s ease-in-out infinite}
+.cosmos .planet{width:68px;height:68px;border-radius:50%;background:radial-gradient(circle at 28% 25%,#d6ffff,#42e4ee 17%,#278dff 43%,#13245c 72%,#060e22);box-shadow:0 0 28px #278dffb0,inset -10px -8px 20px #030a22;z-index:1;animation:holo-float 4s ease-in-out infinite}
+.cosmos i,.cosmos b,.cosmos em{position:absolute;width:135px;height:42px;border:1px solid #36f5d0c4;border-radius:50%;transform:rotate(-25deg);box-shadow:0 0 9px #36f5d055}
+.cosmos b{transform:rotate(57deg);width:98px;height:120px;border-color:#6c9bff9c}.cosmos em{transform:rotate(90deg);width:70px;height:140px;border-color:#b1ffff85}
+.mind svg{color:#9a9aff;filter:drop-shadow(0 0 8px #7b70ff)}.human svg{color:#64f7ff;filter:drop-shadow(0 0 8px #36f5d0)}.science svg{color:#7cbaff;filter:drop-shadow(0 0 8px #278dff)}
+@keyframes holo-spin{to{transform:rotate(360deg) scaleX(.75)}}@keyframes holo-float{0%,100%{transform:translateY(2px)}50%{transform:translateY(-7px)}}
+@media(max-width:800px){.holo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.holo-visual{height:150px}}
+@media(max-width:420px){.holo-card{padding:14px 11px 18px}.holo-card h3{font-size:17px}.holo-visual{height:130px}}
+
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"ss__gh_rf06","url":"https://saiftt942-max.github.io/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SIFE","url":"https://saiftt942-max.github.io/"}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header><div class="wrap nav"><a class="logo" href="#home" aria-label="ss__gh_rf06 home">ss__gh_rf06</a><button class="menu" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">☰</button><nav class="navlinks" id="navlinks" aria-label="Main navigation"><a href="#explore">Explore</a><a href="#vision">Vision</a><a href="#contact">Contact</a><a class="social" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Instagram ↗</a></nav></div></header>
+<header><div class="wrap nav"><a class="logo" href="#home" aria-label="SIFE home">SIFE</a><button class="menu" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">☰</button><nav class="navlinks" id="navlinks" aria-label="Main navigation"><a href="#explore">Explore</a><a href="#vision">Vision</a><a href="#contact">Contact</a><a class="social" href="https://www.instagram.com/SIFE?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Instagram ↗</a></nav></div></header>
 <main id="main">
-<section class="wrap hero" id="home"><div class="intro"><div class="overline"><span class="dot"></span> Independent digital universe · 2026</div><h1>BUILD<span>BEYOND.</span></h1><p>Welcome to the world of <b>seyf</b>.</p><div class="buttons"><a class="btn btn-main" href="#explore">Enter the nexus <span>↘</span></a><a class="btn btn-alt" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Follow my journey ↗</a></div><div class="micro"><div><strong>01—∞</strong>Always exploring</div><div><strong>AI / X</strong>Ideas in motion</div><div><strong>NO LIMITS</strong>Future mindset</div></div></div><div class="art" aria-label="Abstract animated lime and violet digital core"><div class="cross"></div><div class="robot-stage" id="robot-stage" role="img" aria-label="Animated blue holographic humanoid robot">
+<section class="wrap hero" id="home"><div class="intro"><div class="overline"><span class="dot"></span> Independent digital universe · 2026</div><h1>BUILD<span>BEYOND.</span></h1><p>Welcome to the world of <b>seyf</b>.</p><div class="buttons"><a class="btn btn-main" href="#explore">Enter the nexus <span>↘</span></a><a class="btn btn-alt" href="https://www.instagram.com/SIFE?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Follow my journey ↗</a></div><div class="micro"><div><strong>01—∞</strong>Always exploring</div><div><strong>AI / X</strong>Ideas in motion</div><div><strong>NO LIMITS</strong>Future mindset</div></div></div><div class="art" aria-label="Abstract animated lime and violet digital core"><div class="cross"></div><div class="robot-stage" id="robot-stage" role="img" aria-label="Animated blue holographic humanoid robot">
 <div class="robot-figure" aria-hidden="true">
 <div class="bot-antenna"></div><div class="bot-head"><i class="bot-eye eye-left"></i><i class="bot-eye eye-right"></i><i class="bot-ear ear-left"></i><i class="bot-ear ear-right"></i></div>
 <div class="bot-neck"></div><div class="bot-body"><i class="bot-chest"></i><i class="bot-line line-a"></i><i class="bot-line line-b"></i></div>
 <div class="bot-arm arm-left"><i class="bot-joint"></i><i class="bot-forearm"></i><i class="bot-hand"></i></div><div class="bot-arm arm-right"><i class="bot-joint"></i><i class="bot-forearm"></i><i class="bot-hand"></i></div>
 <div class="bot-hip"></div><div class="bot-leg leg-left"><i class="bot-knee"></i><i class="bot-foot"></i></div><div class="bot-leg leg-right"><i class="bot-knee"></i><i class="bot-foot"></i></div>
 </div><div class="robot-scan"></div><div class="robot-floor"></div>
-</div><span class="orb-label label-one">SS__GH_RF06 / ONLINE</span><span class="orb-label label-two">IMAGINATION // ACTIVE</span></div></section>
+</div><span class="orb-label label-one">SIFE / ONLINE</span><span class="orb-label label-two">IMAGINATION // ACTIVE</span></div></section>
 <div class="marquee" aria-hidden="true"><span>✳ CREATE WITHOUT LIMITS　 /　 BUILD WHAT'S NEXT　 /　 STAY CURIOUS　 /　 CREATE WITHOUT LIMITS　 /　 BUILD WHAT'S NEXT　 /　 STAY CURIOUS　 /　</span></div>
-<section class="wrap block" id="explore"><div class="section-top"><div><div class="tag">01 / What drives the signal</div><h2>Curiosity is<br>the interface.</h2></div><p>Three directions. One mindset: explore the unknown, learn constantly, and turn interesting ideas into real things.</p></div><div class="grid"><article class="tile"><div class="num">FIELD_001 / INTELLIGENCE</div><div class="symbol">✳</div><h3>Artificial Intelligence</h3><p>Discovering intelligent tools and new ways to turn complex ideas into useful, human-centred experiences.</p></article><article class="tile"><div class="num">FIELD_002 / DIGITAL CRAFT</div><div class="symbol">⌘</div><h3>Creative Technology</h3><p>Expressive interfaces, experimental code, and digital details made to feel as thoughtful as they look.</p></article><article class="tile"><div class="num">FIELD_003 / TOMORROW</div><div class="symbol">↗</div><h3>Future Thinking</h3><p>Connecting unexpected dots, questioning the default, and staying open to possibilities still taking shape.</p></article></div></section>
-<section class="wrap block" id="vision"><div class="vision"><div class="tag">02 / The operating philosophy</div><h2>The future doesn't arrive.<br>We make it real.</h2><p>Every breakthrough starts as a question. Keep your mind open, your ideas ambitious, and your next move <strong>unexpected.</strong></p></div></section>
-<section class="wrap block" id="contact"><div class="contact"><div><div class="tag">03 / Open channel</div><h2>Got a signal?<br>Let's connect.</h2></div><a class="btn btn-main" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Connect on Instagram <span>↗</span></a></div></section>
+<section class="wrap block" id="explore"><div class="section-top"><div><div class="tag">01 / Explore the unknown</div><h2>Ideas you can<br>almost touch.</h2></div><p>Enter the holographic gallery.</p></div><div class="holo-grid">
+<article class="holo-card"><div class="num">HOLO_01 / COSMOS</div><div class="holo-visual cosmos" aria-hidden="true"><span class="planet"></span><i></i><b></b><em></em></div><h3>Cosmos</h3></article>
+<article class="holo-card"><div class="num">HOLO_02 / MIND</div><div class="holo-visual mind" aria-hidden="true"><svg viewBox="0 0 180 150"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M89 22 C61 9 39 33 48 54 C26 68 43 94 58 94 C52 117 75 126 89 111 C103 126 126 117 120 94 C139 91 153 67 131 54 C140 32 116 9 91 22Z"/><path d="M89 22V112M48 54L89 67 131 54M58 94L89 82 120 94M66 35L89 51 113 35M66 35L58 94M113 35L120 94"/></g><g fill="currentColor"><circle cx="89" cy="22" r="3"/><circle cx="48" cy="54" r="3"/><circle cx="131" cy="54" r="3"/><circle cx="58" cy="94" r="3"/><circle cx="120" cy="94" r="3"/><circle cx="89" cy="82" r="4"/></g></svg></div><h3>Human Mind</h3></article>
+<article class="holo-card"><div class="num">HOLO_03 / HUMAN</div><div class="holo-visual human" aria-hidden="true"><svg viewBox="0 0 180 150"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="90" cy="40" r="19"/><path d="M57 119V99C57 77 70 66 90 66S123 77 123 99V119M57 93L35 109V133M123 93L145 109V133M70 119V141M110 119V141"/><path d="M76 40H104M90 21V59M71 79L109 111M109 79L71 111"/></g><g fill="currentColor"><circle cx="90" cy="40" r="3"/><circle cx="57" cy="99" r="3"/><circle cx="123" cy="99" r="3"/><circle cx="90" cy="91" r="3"/></g></svg></div><h3>Human Connection</h3></article>
+<article class="holo-card"><div class="num">HOLO_04 / SCIENCE</div><div class="holo-visual science" aria-hidden="true"><svg viewBox="0 0 180 150"><g fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="90" cy="75" rx="61" ry="23"/><ellipse cx="90" cy="75" rx="61" ry="23" transform="rotate(60 90 75)"/><ellipse cx="90" cy="75" rx="61" ry="23" transform="rotate(120 90 75)"/><circle cx="90" cy="75" r="8"/></g><g fill="currentColor"><circle cx="151" cy="75" r="4"/><circle cx="60" cy="22" r="4"/><circle cx="60" cy="128" r="4"/></g></svg></div><h3>Science &amp; Discovery</h3></article>
+</div></section>
+<section class="wrap block" id="vision"><div class="vision"><div class="tag">02 / SIFE universe</div><h2>Explore beyond<br>the visible.</h2><p>A universe of <strong>cosmos, mind, humanity and science.</strong></p></div></section>
+<section class="wrap block" id="contact"><div class="contact"><div><div class="tag">03 / Open channel</div><h2>Got a signal?<br>Let's connect.</h2></div><a class="btn btn-main" href="https://www.instagram.com/SIFE?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">Connect on Instagram <span>↗</span></a></div></section>
 </main>
-<footer class="wrap foot"><a class="logo" href="#home">ss__gh_rf06</a><span>© <span id="year"></span> ss__gh_rf06</span><a class="state" href="https://www.instagram.com/ss__gh_rf06?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">INSTAGRAM / @SS__GH_RF06 ↗</a></footer>
+<footer class="wrap foot"><a class="logo" href="#home">SIFE</a><span>© <span id="year"></span> SIFE</span><a class="state" href="https://www.instagram.com/SIFE?srtk=MmlydWhhODR2YXBn" target="_blank" rel="noopener noreferrer">INSTAGRAM / @SIFE ↗</a></footer>
 <script>
 (()=>{document.getElementById('year').textContent=new Date().getFullYear();const b=document.querySelector('.menu'),n=document.getElementById('navlinks');function close(){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Open menu');b.textContent='☰'}b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(o));b.setAttribute('aria-label',o?'Close menu':'Open menu');b.textContent=o?'×':'☰';n.classList.toggle('open',o)});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()})})();
 </script>
