@@ -48,9 +48,12 @@ jobs:
           }
           const app = fs.readFileSync('niyvexa/app.html', 'utf8');
           const sw = fs.readFileSync('niyvexa/sw.js', 'utf8');
+          const sql = fs.readFileSync('niyvexa/supabase-schema.sql', 'utf8');
           if (!app.includes('Number.isInteger(p.age)')) throw new Error('Age integer validation missing.');
           if (!sw.includes('"./auth-config.js"')) throw new Error('Auth config is not in the offline core cache.');
-          console.log('Manifest, required files, and key app invariants validated.');
+          if (!sql.includes('alter table private.profile_private enable row level security;')) throw new Error('Private birth-date table RLS is not enabled.');
+          if (!sql.includes('revoke all on table private.profile_private from public, anon, authenticated;')) throw new Error('Client access to private birth dates is not revoked.');
+          console.log('Manifest, required files, app invariants, and private birth-date access controls validated.');
           NODE
       - name: Check whitespace errors
         run: git diff --check
