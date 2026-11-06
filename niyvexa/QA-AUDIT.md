@@ -35,3 +35,11 @@ Scope: static code review of the public GitHub Pages prototype. No live browser 
 ## Release status
 
 **Prototype only — not ready for public dating-service launch.** Do not describe sign-in, matching, chat, verification, payments or moderation as production features until each is connected and tested.
+
+
+## Work added on 2026-11-06
+- Added `supabase-schema.sql` with account profiles, likes, reciprocal-match trigger, match-scoped messages, blocks, reports, row-level security policies, and a private birth-date table plus adult-profile RPC.
+- Added `SUPABASE-SETUP.md` describing external project/provider setup and launch gates.
+- Added `robots.txt` to allow the landing page while excluding the demo app from indexing.
+- Added a GitHub Actions workflow to validate the manifest, inline JavaScript syntax, and required site files.
+- The schema has not yet been applied to a real Supabase project. The front-end still uses local demo state; database integration, OAuth provider setup, live testing, and payments remain blocked on external configuration and further development.
