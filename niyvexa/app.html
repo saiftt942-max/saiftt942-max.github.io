@@ -256,7 +256,8 @@ function mutual(p){
 function selectedPrefs(){
  const min=Math.max(18,Math.min(99,Number(document.getElementById("pref-min-age").value)||18));
  const max=Math.max(min,Math.min(99,Number(document.getElementById("pref-max-age").value)||35));
- const age=Math.max(18,Math.min(99,Number(document.getElementById("profile-age").value)||18));
+ const rawAge=document.getElementById("profile-age").value.trim();
+ const age=rawAge===""?0:Number(rawAge);
  const dist=Math.max(1,Math.min(1000,Number(document.getElementById("profile-distance").value)||100));
  const intents=[...document.querySelectorAll('input[name="intent"]:checked')].map(x=>x.value);
  return {name:document.getElementById("profile-name").value.trim().slice(0,35)||"Guest",age,gender:document.getElementById("profile-gender").value,city:document.getElementById("profile-city").value,maxDistance:dist,looking:document.getElementById("profile-looking").value,intents,minAge:min,maxAge:max};
@@ -299,8 +300,8 @@ function installApp(){if(deferredInstall){deferredInstall.prompt();deferredInsta
 document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab)));
 document.getElementById("language").addEventListener("change",e=>applyLanguage(e.target.value));
 document.getElementById("apply-filters").addEventListener("click",applyQuickFilters);
-document.getElementById("reset-filters").addEventListener("click",()=>{document.getElementById("filter-gender").value="all";document.getElementById("min-age").value=18;document.getElementById("max-age").value=35;document.getElementById("max-distance").value=100;document.getElementById("filter-intent").value="all";document.getElementById("filter-city").value="all";state.profile.looking="all";state.profile.minAge=18;state.profile.maxAge=35;state.profile.maxDistance=100;persist();renderProfiles()});
-document.getElementById("save-profile").addEventListener("click",()=>{const p=selectedPrefs();if(p.age<18){toast("Please enter an age of 18 or older.");return}if(!p.intents.length){toast("Please choose at least one intention.");return}state.profile=p;persist();fillProfile();renderProfiles();toast("Preferences saved in this browser only.")});
+document.getElementById("reset-filters").addEventListener("click",()=>{document.getElementById("filter-gender").value="all";document.getElementById("min-age").value=18;document.getElementById("max-age").value=35;document.getElementById("max-distance").value=100;document.getElementById("filter-intent").value="all";document.getElementById("filter-city").value="all";state.profile.looking="all";state.profile.minAge=18;state.profile.maxAge=35;state.profile.maxDistance=100;persist();renderProfiles();renderMatches()});
+document.getElementById("save-profile").addEventListener("click",()=>{const p=selectedPrefs();if(!Number.isFinite(p.age)||p.age<18||p.age>99){toast("Please enter a valid age from 18 to 99.");return}if(p.minAge<18||p.maxAge<p.minAge||p.maxAge>99){toast("Please check the age range.");return}if(!p.intents.length){toast("Please choose at least one intention.");return}state.profile=p;persist();fillProfile();renderProfiles();renderMatches();toast("Preferences saved in this browser only.")});
 document.getElementById("load-demo").addEventListener("click",()=>{state.profile={name:"Guest",age:19,gender:"man",city:"Guelma",maxDistance:100,looking:"all",intents:["friendship","serious"],minAge:18,maxAge:35};persist();fillProfile();renderProfiles();toast("Preferences saved in this browser only.")});
 document.getElementById("delete-data").addEventListener("click",()=>{if(!confirm(t("Delete demo data")+"?"))return;try{localStorage.removeItem(SKEY)}catch(e){};state={profile:{name:"Guest",age:19,gender:"man",city:"Guelma",maxDistance:100,looking:"all",intents:["friendship","serious"],minAge:18,maxAge:35},likes:[],matches:[],blocked:[],reports:[],messages:{},selectedChat:null};fillProfile();renderProfiles();renderMatches();renderChats();toast("Demo data deleted from this browser.")});
 document.getElementById("install").addEventListener("click",installApp);
@@ -333,7 +334,7 @@ if("serviceWorker" in navigator && location.protocol==="https:")window.addEventL
   client.auth.onAuthStateChange((event,session)=>{if(session)showApp()});
  }
  $("auth-language").addEventListener("change",e=>setLang(e.target.value));
- $("auth-demo").addEventListener("click",()=>{showApp();say("");});
+ $("auth-demo").addEventListener("click",()=>{if(!window.confirm(lang==="ar"?"هل تؤكد أن عمرك 18 عامًا أو أكثر؟ هذه نسخة تجريبية بملفات خيالية فقط.":lang==="fr"?"Confirmez-vous avoir 18 ans ou plus ? Cette démo utilise uniquement des profils fictifs.":lang==="es"?"¿Confirmas que tienes 18 años o más? Esta demo usa solo perfiles ficticios.":"Do you confirm you are 18 or older? This demo uses fictional profiles only."))return;showApp();say("");});
  $("auth-google").addEventListener("click",async()=>{if(!client){say("missing");return}say("");const {error}=await client.auth.signInWithOAuth({provider:"google",options:{redirectTo:location.href.split("#")[0]}});if(error)say("failed")});
  $("auth-facebook").addEventListener("click",async()=>{if(!client){say("missing");return}say("");const {error}=await client.auth.signInWithOAuth({provider:"facebook",options:{redirectTo:location.href.split("#")[0]}});if(error)say("failed")});
  $("auth-email-form").addEventListener("submit",async e=>{e.preventDefault();if(!client){say("missing");return}const email=$("auth-email").value.trim();if(!email)return;say("sending");const {error}=await client.auth.signInWithOtp({email,options:{emailRedirectTo:location.href.split("#")[0]}});say(error?"failed":"sent")});
