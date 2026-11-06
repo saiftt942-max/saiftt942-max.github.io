@@ -1,0 +1,37 @@
+name: Niyvexa static checks
+
+on:
+  push:
+    paths:
+      - 'niyvexa/**'
+      - '.github/workflows/niyvexa-check.yml'
+  pull_request:
+    paths:
+      - 'niyvexa/**'
+      - '.github/workflows/niyvexa-check.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate manifest JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('niyvexa/manifest.webmanifest','utf8')); console.log('manifest JSON valid')"
+      - name: Validate inline JavaScript syntax
+        run: node niyvexa/check-inline-js.mjs
+      - name: Check essential public files
+        run: |
+          test -s niyvexa/index.html
+          test -s niyvexa/app.html
+          test -s niyvexa/manifest.webmanifest
+          test -s niyvexa/icon.svg
+          test -s niyvexa/icon-192.svg
+          test -s niyvexa/icon-512.svg
+          test -s niyvexa/privacy.html
+          test -s niyvexa/terms.html
+          test -s niyvexa/sitemap.xml
+          test -s niyvexa/robots.txt
