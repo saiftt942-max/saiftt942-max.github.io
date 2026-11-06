@@ -1,4 +1,4 @@
-const CACHE = "niyvexa-demo-v1";
+const CACHE = "niyvexa-demo-v2";
 const CORE = ["./", "./index.html", "./app.html", "./manifest.webmanifest", "./icon.svg", "./privacy.html", "./terms.html"];
 self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting())));
 self.addEventListener("activate", event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k.startsWith("niyvexa-demo-") && k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())));
