@@ -1,0 +1,22 @@
+plugins {
+    id 'com.android.application'
+}
+android {
+    namespace 'app.niyvexa.mobile'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'app.niyvexa.mobile'
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName '0.1.0'
+    }
+    buildTypes {
+        debug { applicationIdSuffix '.debug'; versionNameSuffix '-debug' }
+        release {
+            minifyEnabled false
+            // A publishable release must be signed with a persistent private upload key.
+            // Configure ORIVEXI/NIYVEXA signing secrets in GitHub Actions before a release build.
+        }
+    }
+}
