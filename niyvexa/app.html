@@ -44,7 +44,7 @@ body:not(.auth-pending) #auth-screen{display:none}
 </section>
 
 <header class="top"><div class="top-inner">
-<div class="brand"><div class="mark">O</div><div><strong>NIYVEXA</strong><small data-i18n="Intent first. Noise less.">Intent first. Noise less.</small></div></div>
+<div class="brand"><div class="mark" aria-hidden="true">♡</div><div><strong>NIYVEXA</strong><small data-i18n="Intent first. Noise less.">Intent first. Noise less.</small></div></div>
 <div class="tools"><select id="language" aria-label="Language"><option value="ar">العربية</option><option value="en">English</option><option value="fr">Français</option><option value="es">Español</option></select><button class="btn ghost" id="install" data-i18n="Add to home screen">Add to home screen</button><a href="./index.html" class="btn ghost" data-i18n="About">About</a></div>
 </div></header>
 <main class="wrap">
@@ -308,7 +308,7 @@ document.getElementById("install").addEventListener("click",installApp);
 document.getElementById("chat-form").addEventListener("submit",e=>{e.preventDefault();const text=document.getElementById("message-text").value.trim();if(!text||!state.selectedChat)return;const arr=state.messages[state.selectedChat]||(state.messages[state.selectedChat]=[]);arr.push({mine:true,text:text.slice(0,500)});document.getElementById("message-text").value="";persist();renderChats();document.getElementById("chatbox").scrollTop=document.getElementById("chatbox").scrollHeight;toast("Message saved locally.")});
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredInstall=e});
 load();fillProfile();let preferred="ar";try{preferred=localStorage.getItem("niyvexa_lang")||"ar"}catch(e){};applyLanguage(preferred);renderProfiles();renderMatches();renderChats();
-if("serviceWorker" in navigator && location.protocol==="https:")window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=2",{scope:"./",updateViaCache:"none"}).catch(()=>{}));
+if("serviceWorker" in navigator && location.protocol==="https:")window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=3",{scope:"./",updateViaCache:"none"}).catch(()=>{}));
 })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
