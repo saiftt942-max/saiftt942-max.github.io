@@ -7,7 +7,7 @@ for (const file of files) {
   const html = fs.readFileSync(file, 'utf8');
   const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)];
   for (const [, attrs, code] of scripts) {
-    if (/\bsrc\s*=/.test(attrs) || !code.trim()) continue;
+    if (/\bsrc\s*=/.test(attrs) || /\btype\s*=\s*["']?application\/ld\+json/i.test(attrs) || /\btype\s*=\s*["']?application\/json/i.test(attrs) || !code.trim()) continue;
     new vm.Script(code, { filename: file });
     checked++;
   }
