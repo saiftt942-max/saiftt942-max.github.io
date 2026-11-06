@@ -1,0 +1,29 @@
+{
+  "id": "./",
+  "name": "ORIVEXI — Intent first",
+  "short_name": "ORIVEXI",
+  "description": "Intent-first social discovery with mutual preferences.",
+  "lang": "en",
+  "dir": "auto",
+  "start_url": "./app.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#101218",
+  "theme_color": "#101218",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "./icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
