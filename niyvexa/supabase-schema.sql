@@ -52,6 +52,34 @@ drop trigger if exists profile_private_validate_birth_date on private.profile_pr
 create trigger profile_private_validate_birth_date before insert or update on private.profile_private
 for each row execute function private.validate_birth_date();
 
+-- The browser calls this RPC after collecting an adult user's birth date.
+-- The exact date remains in the private schema and is never returned to discovery clients.
+create or replace function public.complete_adult_profile(birth_date_input date)
+returns void language plpgsql security definer set search_path = ''
+as $
+declare uid uuid;
+begin
+  uid := auth.uid();
+  if uid is null then raise exception 'Authentication required'; end if;
+  if not exists (
+    select 1 from public.profiles p
+    where p.id = uid
+      and length(trim(p.display_name)) >= 1
+      and p.gender is not null
+      and length(trim(p.city)) >= 1
+      and cardinality(p.intents) > 0
+  ) then
+    raise exception 'Complete name, gender, city, and intentions first';
+  end if;
+  insert into private.profile_private(user_id, birth_date)
+  values (uid, birth_date_input)
+  on conflict (user_id) do update set birth_date = excluded.birth_date, updated_at = now();
+  update public.profiles set is_visible = true where id = uid;
+end;
+$;
+revoke all on function public.complete_adult_profile(date) from public;
+grant execute on function public.complete_adult_profile(date) to authenticated;
+
 create table if not exists public.likes (
   id uuid primary key default gen_random_uuid(),
   from_user uuid not null references public.profiles(id) on delete cascade,
