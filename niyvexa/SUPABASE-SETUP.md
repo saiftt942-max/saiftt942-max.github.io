@@ -4,7 +4,7 @@ The public GitHub Pages site is a static front end. Real authentication and shar
 
 ## 1. Create and configure the backend
 1. Create a Supabase project in your own account.
-2. In **SQL Editor**, run `supabase-schema.sql` from this folder.
+2. In **SQL Editor**, run `supabase-schema.sql` from this folder. Keep the `private` schema out of Supabase's API-exposed schemas.
 3. In **Project Settings → API**, copy the Project URL and the public publishable/anon key.
 4. Put those two public client values in `auth-config.js`. Never put a `service_role` or secret key in this repository.
 5. In **Authentication → URL Configuration**, add the deployed app URL to Site URL / Redirect URLs:
@@ -14,7 +14,7 @@ The public GitHub Pages site is a static front end. Real authentication and shar
 
 ## 2. Important limitations
 - The current `app.html` still runs its discovery, likes, matches, and messages as local demo state. Creating these tables does **not** automatically connect those controls to the database. A separate integration pass and live tests are required before calling the service production-ready.
-- The schema stores date of birth to enforce an adult-only profile; do not display the full birth date publicly. A restricted discovery view and server-side validation should be added before launch.
+- The schema stores the exact date of birth in a separate `private` schema and validates adulthood server-side. After saving the public profile fields, call the `complete_adult_profile` RPC with the birth date; do not expose the `private` schema through the Data API.
 - Photo upload, moderation dashboard, verification, notifications, billing, refunds, deletion/export requests, and abuse-rate limits are not implemented.
 - Do not collect real users' sensitive data until the privacy notice, data retention, moderation, and incident response process are finalized.
 - Do not enable paid subscriptions until a payment provider legally available to the business in Algeria is confirmed and tested.
