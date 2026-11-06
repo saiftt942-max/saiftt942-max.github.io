@@ -1,0 +1,98 @@
+name: Build Niyvexa Android APK
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "android/**"
+      - ".github/workflows/niyvexa-android.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools platforms;android-35 build-tools;35.0.0"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+
+      - name: Build installable debug APK (device testing only)
+        run: gradle --no-daemon -p android assembleDebug
+
+      - name: Rename debug APK
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk Niyvexa-0.1.0-demo-DEBUG.apk
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Niyvexa-0.1.0-demo-DEBUG
+          path: Niyvexa-0.1.0-demo-DEBUG.apk
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Check for persistent release-signing secrets
+        id: signing
+        shell: bash
+        env:
+          KEYSTORE_B64: ${{ secrets.NIYVEXA_KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.NIYVEXA_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.NIYVEXA_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.NIYVEXA_KEY_PASSWORD }}
+        run: |
+          if [[ -n "$KEYSTORE_B64" && -n "$STORE_PASSWORD" && -n "$KEY_ALIAS" && -n "$KEY_PASSWORD" ]]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "No release signing key configured; only the debug test APK will be produced."
+          fi
+
+      - name: Restore private release keystore
+        if: steps.signing.outputs.configured == 'true'
+        shell: bash
+        env:
+          KEYSTORE_B64: ${{ secrets.NIYVEXA_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_B64" | base64 --decode > "$RUNNER_TEMP/niyvexa-upload.jks"
+          chmod 600 "$RUNNER_TEMP/niyvexa-upload.jks"
+
+      - name: Build signed release APK
+        if: steps.signing.outputs.configured == 'true'
+        env:
+          NIYVEXA_KEYSTORE_PATH: ${{ runner.temp }}/niyvexa-upload.jks
+          NIYVEXA_KEYSTORE_PASSWORD: ${{ secrets.NIYVEXA_KEYSTORE_PASSWORD }}
+          NIYVEXA_KEY_ALIAS: ${{ secrets.NIYVEXA_KEY_ALIAS }}
+          NIYVEXA_KEY_PASSWORD: ${{ secrets.NIYVEXA_KEY_PASSWORD }}
+        run: gradle --no-daemon -p android assembleRelease
+
+      - name: Verify release APK signature
+        if: steps.signing.outputs.configured == 'true'
+        run: |
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose android/app/build/outputs/apk/release/app-release.apk
+          cp android/app/build/outputs/apk/release/app-release.apk Niyvexa-0.1.0-demo-RELEASE-SIGNED.apk
+
+      - name: Upload signed release APK
+        if: steps.signing.outputs.configured == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Niyvexa-0.1.0-demo-RELEASE-SIGNED
+          path: Niyvexa-0.1.0-demo-RELEASE-SIGNED.apk
+          if-no-files-found: error
+          retention-days: 30
