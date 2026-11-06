@@ -43,3 +43,13 @@ Scope: static code review of the public GitHub Pages prototype. No live browser 
 - Added `robots.txt` to allow the landing page while excluding the demo app from indexing.
 - Added a GitHub Actions workflow to validate the manifest, inline JavaScript syntax, and required site files.
 - The schema has not yet been applied to a real Supabase project. The front-end still uses local demo state; database integration, OAuth provider setup, live testing, and payments remain blocked on external configuration and further development.
+
+
+## Additional QA improvements — 2026-11-06
+- Quick filters now reject invalid numeric ranges instead of silently coercing the maximum age upward.
+- Profile saving now requires whole-number age bounds and a whole-number distance within the supported range.
+- Quick-filter changes refresh both discovery and match views.
+- Service-worker cache is now v4 and includes `auth-config.js` in the offline core.
+- Added `.github/workflows/niyvexa-qa.yml` to check inline JavaScript syntax, manifest metadata, required files, and selected app invariants on pushes and pull requests.
+
+These are static checks and code-level corrections only. The GitHub Actions workflow has been committed but its run result has not yet been observed. No real Supabase project, real user matching, or payment processing is active.
