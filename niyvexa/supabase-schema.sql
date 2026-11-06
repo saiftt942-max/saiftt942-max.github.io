@@ -1,11 +1,11 @@
 -- NIYVEXA backend foundation — apply in Supabase SQL Editor.
 -- Requires Supabase Auth. Review policies before production launch.
 create extension if not exists pgcrypto;
+create schema if not exists private;
 
 create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   display_name text not null default '' check (char_length(display_name) <= 60),
-  birth_date date,
   gender text check (gender in ('man','woman','nonbinary','other')),
   city text not null default '' check (char_length(city) <= 100),
   bio text not null default '' check (char_length(bio) <= 500),
@@ -17,8 +17,40 @@ create table if not exists public.profiles (
   is_visible boolean not null default false,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
-  constraint adult_birth_date check (birth_date is null or birth_date <= (current_date - interval '18 years')::date)
 );
+
+-- Keep full birth dates outside the API-exposed public schema.
+create table if not exists private.profile_private (
+  user_id uuid primary key references public.profiles(id) on delete cascade,
+  birth_date date not null,
+  updated_at timestamptz not null default now()
+);
+
+create or replace function public.is_adult_profile(profile_id uuid)
+returns boolean language sql stable security definer set search_path = ''
+as $
+  select exists (
+    select 1 from private.profile_private pp
+    where pp.user_id = profile_id
+      and pp.birth_date <= (current_date - interval '18 years')::date
+  );
+$;
+revoke all on function public.is_adult_profile(uuid) from public;
+grant execute on function public.is_adult_profile(uuid) to authenticated;
+
+create or replace function private.validate_birth_date()
+returns trigger language plpgsql set search_path = ''
+as $
+begin
+  if new.birth_date > (current_date - interval '18 years')::date then
+    raise exception 'NIYVEXA is for adults aged 18 and over';
+  end if;
+  new.updated_at = now();
+  return new;
+end; $;
+drop trigger if exists profile_private_validate_birth_date on private.profile_private;
+create trigger profile_private_validate_birth_date before insert or update on private.profile_private
+for each row execute function private.validate_birth_date();
 
 create table if not exists public.likes (
   id uuid primary key default gen_random_uuid(),
@@ -127,8 +159,7 @@ using (
   id = (select auth.uid())
   or (
     is_visible = true
-    and birth_date is not null
-    and birth_date <= (current_date - interval '18 years')::date
+    and public.is_adult_profile(profiles.id)
     and not exists (
       select 1 from public.blocks b
       where (b.blocker_id = (select auth.uid()) and b.blocked_id = profiles.id)
