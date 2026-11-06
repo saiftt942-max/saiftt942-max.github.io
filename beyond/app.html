@@ -199,6 +199,7 @@ function t(s){return (D[s]&&D[s][lang])||(lang==="ar"&&AR[s])||s}
 function persist(){try{localStorage.setItem(SKEY,JSON.stringify(state))}catch(e){}}
 function load(){try{const x=JSON.parse(localStorage.getItem(SKEY)||"null");if(x&&x.profile)state={...state,...x,profile:{...state.profile,...x.profile}}}catch(e){}}
 function toast(s){const el=document.getElementById("toast");el.textContent=t(s);el.style.display="block";clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display="none",2800)}
+function escapeHtml(value){return String(value).replace(/[&<>"\']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","\'":"&#39;"}[ch]))}
 function labelGender(g){return t(g==="man"?"Man":"Woman")}
 function labelIntent(i){return t(({friendship:"Friendship",social:"Social connection",serious:"Serious relationship",explore:"Exploration"})[i]||i)}
 function cityName(c){return c==="Setif"?"Sétif":c}
@@ -250,7 +251,7 @@ function renderChats(){
  if(!list.length){chooser.innerHTML='<div class="empty">'+t("Select a demo match to open its local chat.")+'</div>';area.classList.add("hidden");return}
  chooser.innerHTML='<div class="checkrow">'+list.map(p=>'<button class="btn '+(state.selectedChat===p.id?'primary':'')+'" data-pick="'+p.id+'">'+p.name+'</button>').join("")+'</div>';
  chooser.querySelectorAll("[data-pick]").forEach(b=>b.addEventListener("click",()=>{state.selectedChat=b.dataset.pick;persist();renderChats()}));
- const p=list.find(x=>x.id===state.selectedChat)||list[0];state.selectedChat=p.id;area.classList.remove("hidden");document.getElementById("chat-title").textContent=p.name+" — "+t("Say hello — this message stays on this device.");const messages=(state.messages[p.id]||[]);document.getElementById("chatbox").innerHTML=messages.map(m=>'<div class="bubble '+(m.mine?'mine':'')+'">'+m.text+'</div>').join("")||'<div class="sub">'+t("Say hello — this message stays on this device.")+'</div>';
+ const p=list.find(x=>x.id===state.selectedChat)||list[0];state.selectedChat=p.id;area.classList.remove("hidden");document.getElementById("chat-title").textContent=p.name+" — "+t("Say hello — this message stays on this device.");const messages=(state.messages[p.id]||[]);document.getElementById("chatbox").innerHTML=messages.map(m=>'<div class="bubble '+(m.mine?'mine':'')+'">'+escapeHtml(m.text)+'</div>').join("")||'<div class="sub">'+t("Say hello — this message stays on this device.")+'</div>';
 }
 function fillProfile(){
  const p=state.profile;document.getElementById("profile-name").value=p.name||"Guest";document.getElementById("profile-age").value=p.age;document.getElementById("profile-gender").value=p.gender;document.getElementById("profile-city").value=p.city;document.getElementById("profile-distance").value=p.maxDistance;document.getElementById("profile-looking").value=p.looking;document.getElementById("pref-min-age").value=p.minAge;document.getElementById("pref-max-age").value=p.maxAge;document.querySelectorAll('input[name="intent"]').forEach(x=>x.checked=p.intents.includes(x.value));
