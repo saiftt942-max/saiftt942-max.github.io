@@ -26,6 +26,12 @@ create table if not exists private.profile_private (
   updated_at timestamptz not null default now()
 );
 
+-- Defense in depth: the private schema must not be readable by client roles,
+-- even if it is accidentally added to the API-exposed schemas later.
+alter table private.profile_private enable row level security;
+revoke all on schema private from public, anon, authenticated;
+revoke all on table private.profile_private from public, anon, authenticated;
+
 create or replace function public.is_adult_profile(profile_id uuid)
 returns boolean language sql stable security definer set search_path = ''
 as $fn$
