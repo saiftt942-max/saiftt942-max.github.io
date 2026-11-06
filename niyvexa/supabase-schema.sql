@@ -16,7 +16,7 @@ create table if not exists public.profiles (
   max_distance_km integer not null default 100 check (max_distance_km between 1 and 5000),
   is_visible boolean not null default false,
   created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
 );
 
 -- Keep full birth dates outside the API-exposed public schema.
@@ -129,8 +129,8 @@ create table if not exists public.reports (
 );
 
 create or replace function public.set_updated_at()
-returns trigger language plpgsql as $$
-begin new.updated_at = now(); return new; end; $$;
+returns trigger language plpgsql as $fn$
+begin new.updated_at = now(); return new; end; $fn$;
 drop trigger if exists profiles_set_updated_at on public.profiles;
 create trigger profiles_set_updated_at before update on public.profiles
 for each row execute function public.set_updated_at();
@@ -138,13 +138,13 @@ for each row execute function public.set_updated_at();
 -- Create an empty private profile for each newly authenticated account.
 create or replace function public.handle_new_user()
 returns trigger language plpgsql security definer set search_path = ''
-as $$
+as $fn$
 begin
   insert into public.profiles (id, display_name)
   values (new.id, coalesce(new.raw_user_meta_data ->> 'name', ''))
   on conflict (id) do nothing;
   return new;
-end; $$;
+end; $fn$;
 drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created after insert on auth.users
 for each row execute function public.handle_new_user();
@@ -152,7 +152,7 @@ for each row execute function public.handle_new_user();
 -- A match is created only after the other account has also liked back.
 create or replace function public.create_reciprocal_match()
 returns trigger language plpgsql security definer set search_path = ''
-as $$
+as $fn$
 declare a uuid; b uuid;
 begin
   if exists (
@@ -169,7 +169,7 @@ begin
     on conflict (user_a, user_b) do nothing;
   end if;
   return new;
-end; $$;
+end; $fn$;
 drop trigger if exists likes_create_reciprocal_match on public.likes;
 create trigger likes_create_reciprocal_match after insert on public.likes
 for each row execute function public.create_reciprocal_match();
