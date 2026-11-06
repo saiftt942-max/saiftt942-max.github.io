@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /niyvexa/
+Disallow: /niyvexa/app.html
+Sitemap: https://saiftt942-max.github.io/niyvexa/sitemap.xml
