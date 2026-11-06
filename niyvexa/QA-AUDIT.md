@@ -53,3 +53,9 @@ Scope: static code review of the public GitHub Pages prototype. No live browser 
 - Added `.github/workflows/niyvexa-qa.yml` to check inline JavaScript syntax, manifest metadata, required files, and selected app invariants on pushes and pull requests.
 
 These are static checks and code-level corrections only. The GitHub Actions workflow has been committed but its run result has not yet been observed. No real Supabase project, real user matching, or payment processing is active.
+
+
+## Security hardening — 2026-11-06
+- Enabled row-level security on `private.profile_private` and explicitly revoked schema/table privileges from `PUBLIC`, `anon`, and `authenticated` as defense in depth for birth dates.
+- Extended static CI checks to fail if either private-table protection is removed.
+- This does not replace applying the SQL to Supabase and testing with real authenticated accounts; the backend remains unconfigured.
