@@ -1,0 +1,23 @@
+{
+  "id": "./",
+  "name": "BEYOND — Intent first",
+  "short_name": "BEYOND",
+  "description": "Mutual-intent dating and social discovery preview.",
+  "lang": "en",
+  "dir": "auto",
+  "start_url": "./app.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#101218",
+  "theme_color": "#101218",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
