@@ -28,19 +28,19 @@ create table if not exists private.profile_private (
 
 create or replace function public.is_adult_profile(profile_id uuid)
 returns boolean language sql stable security definer set search_path = ''
-as $
+as $fn$
   select exists (
     select 1 from private.profile_private pp
     where pp.user_id = profile_id
       and pp.birth_date <= (current_date - interval '18 years')::date
   );
-$;
+$fn$;
 revoke all on function public.is_adult_profile(uuid) from public;
 grant execute on function public.is_adult_profile(uuid) to authenticated;
 
 create or replace function private.validate_birth_date()
 returns trigger language plpgsql set search_path = ''
-as $
+as $fn$
 begin
   if new.birth_date > (current_date - interval '18 years')::date then
     raise exception 'NIYVEXA is for adults aged 18 and over';
@@ -56,7 +56,7 @@ for each row execute function private.validate_birth_date();
 -- The exact date remains in the private schema and is never returned to discovery clients.
 create or replace function public.complete_adult_profile(birth_date_input date)
 returns void language plpgsql security definer set search_path = ''
-as $
+as $fn$
 declare uid uuid;
 begin
   uid := auth.uid();
@@ -76,7 +76,7 @@ begin
   on conflict (user_id) do update set birth_date = excluded.birth_date, updated_at = now();
   update public.profiles set is_visible = true where id = uid;
 end;
-$;
+$fn$;
 revoke all on function public.complete_adult_profile(date) from public;
 grant execute on function public.complete_adult_profile(date) to authenticated;
 
