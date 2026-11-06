@@ -47,7 +47,7 @@ begin
   end if;
   new.updated_at = now();
   return new;
-end; $;
+end; $fn$;
 drop trigger if exists profile_private_validate_birth_date on private.profile_private;
 create trigger profile_private_validate_birth_date before insert or update on private.profile_private
 for each row execute function private.validate_birth_date();
